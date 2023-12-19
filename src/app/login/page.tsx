@@ -1,9 +1,13 @@
-import {
-   LoginWithGoogle,
-   LoginWithGithub,
-   LoginWithTwitter,
-} from '@/components/buttons/LoginButton'
-export default function Login() {
+import { LoginWithGoogle } from '@/components/buttons/LoginButton'
+import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth'
+import authOptions from '@/utils/authOptions'
+
+export default async function Login() {
+   const sesion = await getServerSession(authOptions)
+   if (!!sesion) {
+      redirect('/')
+   }
    return (
       <main className="">
          <div className="max-w-md mx-auto flex flex-col gap-6 p-6 shadow">
@@ -13,8 +17,6 @@ export default function Login() {
             </p>
             <div className="flex flex-col gap-3">
                <LoginWithGoogle />
-               <LoginWithGithub />
-               <LoginWithTwitter />
             </div>
          </div>
       </main>

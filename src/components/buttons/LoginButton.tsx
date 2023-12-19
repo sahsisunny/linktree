@@ -1,11 +1,7 @@
 'use client'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-   faGoogle,
-   faTwitter,
-   faGithub,
-} from '@fortawesome/free-brands-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { signIn } from 'next-auth/react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 interface LoginButtonProps {
@@ -39,26 +35,6 @@ export const LoginWithGoogle: React.FC = () => {
             console.log('clicked')
             signIn('google')
          }}
-      />
-   )
-}
-
-export const LoginWithTwitter: React.FC = () => {
-   return (
-      <LoginButton
-         iconName={faTwitter}
-         text="Twitter"
-         onClick={() => signIn('twitter')}
-      />
-   )
-}
-
-export const LoginWithGithub: React.FC = () => {
-   return (
-      <LoginButton
-         iconName={faGithub}
-         text="Github"
-         onClick={() => signIn('github')}
       />
    )
 }

@@ -10,14 +10,14 @@ import authOptions from '@/utils/authOptions'
 async function Header() {
    const session = await getServerSession(authOptions)
    return (
-      <header className="bg-white border-b-2  py-4">
+      <header className="bg-white border-b-2 py-4">
          <div className="max-w-4xl flex justify-between mx-auto px-6">
             <div className="flex gap-6 ">
                <Link
                   href="/"
-                  className="flex items-center gap-2 text-2xl font-semibold text-blue-500"
+                  className="flex items-center gap-2 text-md font-semibold text-blue-500"
                >
-                  <FontAwesomeIcon icon={faLink} className="h-6" />
+                  <FontAwesomeIcon icon={faLink} className="h-4" />
 
                   <span>LinkTree</span>
                </Link>
@@ -43,8 +43,8 @@ async function Header() {
                </nav>
             ) : (
                <nav className="flex gap-4 text-sm text-slate-500 items-center">
-                  <Link href={'/login'}>Sign in</Link>
-                  <Link href={'/login'}>Create Account</Link>
+                  <Link href="/login">Sign in</Link>
+                  <Link href="/login">Create Account</Link>
                </nav>
             )}
          </div>
