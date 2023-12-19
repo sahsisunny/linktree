@@ -6,8 +6,10 @@
       "dev": "next dev",
       "build": "next build",
       "start": "next start",
-      "lint": "next lint",
-      "format": "prettier --write .",
+      "lint:fix": "next lint --fix",
+      "type-check": "tsc --noEmit",
+      "format:fix": "prettier --write .",
+      "fix": "yarn format:fix && yarn lint:fix",
       "prepare": "husky install"
    },
    "dependencies": {
@@ -32,7 +34,6 @@
       "eslint": "^8",
       "eslint-config-next": "14.0.4",
       "husky": "^8.0.3",
-      "lint-staged": "^15.2.0",
       "postcss": "^8",
       "prettier": "^3.1.1",
       "tailwindcss": "^3.3.0",
@@ -41,18 +42,5 @@
    "volta": {
       "node": "18.17.0",
       "yarn": "1.21.1"
-   },
-   "lint-staged": {
-      "*.{js,jsx,ts,tsx}": [
-         "yarn lint",
-         "yarn format",
-         "yarn build",
-         "git add ."
-      ]
-   },
-   "husky": {
-      "hooks": {
-         "pre-commit": "lint-staged"
-      }
    }
 }
