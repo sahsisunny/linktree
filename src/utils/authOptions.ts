@@ -3,14 +3,23 @@ import { MongoDBAdapter } from '@auth/mongodb-adapter'
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
+let clientId = process.env.GOOGLE_CLIENT_ID
+let clientSecret = process.env.GOOGLE_CLIENT_SECRET
+
+if (!clientId || !clientSecret) {
+   throw new Error(
+      'Please define the GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET environment variables',
+   )
+}
+
 const authOptions: NextAuthOptions = {
    adapter: MongoDBAdapter(typedClientPromise),
-   secret: process.env.SECRET!,
+   secret: process.env.SECRET,
 
    providers: [
       GoogleProvider({
-         clientId: process.env.GOOGLE_CLIENT_ID!,
-         clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+         clientId,
+         clientSecret,
       }),
    ],
 }
