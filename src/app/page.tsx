@@ -1,7 +1,13 @@
-'use client'
+'use server'
+import getUri from '@/actions/getUri'
 import HomeForm from '@/components/home/HomeForm'
+import HomeOutput from '@/components/home/HomeOutput'
+import authOptions from '@/utils/authOptions'
+import { getServerSession } from 'next-auth'
 
-export default function Home() {
+export default async function HomePage() {
+   const session = await getServerSession(authOptions)
+   const uri = await getUri(session)
    return (
       <section className="pt-32">
          <div className="max-w-md mb-6">
@@ -13,7 +19,8 @@ export default function Home() {
                Share your profile, social media, and more with a single link.
             </h2>
          </div>
-         <HomeForm />
+         {!uri && <HomeForm />}
+         {!!uri && <HomeOutput uri={uri} />}
       </section>
    )
 }

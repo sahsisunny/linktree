@@ -14,7 +14,12 @@ async function AccountPage({ searchParams }: { searchParams: SearchParams }) {
    if (!sesion) {
       redirect('/login')
    }
-   return <div className="flex flex-col items-center justify-center py-2"></div>
+   return (
+      <div className="flex flex-col items-center justify-center py-2">
+         <h1 className="text-3xl font-bold">Account</h1>
+         <p className="text-xl">Username: {username}</p>
+      </div>
+   )
 }
 
 export default AccountPage
