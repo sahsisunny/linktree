@@ -2,49 +2,108 @@ import React from 'react'
 import Link from 'next/link'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import LogOutButton from '../buttons/LogOutButton'
+import { FaLink } from 'react-icons/fa'
+import { LuListTree } from 'react-icons/lu'
+import { IoShapesOutline } from 'react-icons/io5'
+import { SiGoogleanalytics } from 'react-icons/si'
+import { IoMdSettings } from 'react-icons/io'
+
 import authOptions from '@/utils/authOptions'
 
 async function Header() {
    const session = await getServerSession(authOptions)
    return (
-      <header className="bg-white border-b-2 py-4">
-         <div className="max-w-4xl flex justify-between mx-auto px-6">
+      <header className=" w-full sticky top-10 z-50 shadow-md">
+         <div className="max-w-[90vw] mx-auto flex justify-between px-4 bg-white py-3 rounded-[35px]  ">
             <div className="flex gap-6 ">
                <Link
                   href="/"
                   className="flex items-center gap-2 text-md font-semibold text-blue-500"
                >
-                  <FontAwesomeIcon icon={faLink} className="h-4" />
+                  <FaLink className="text-2xl" />
 
                   <span>LinkTree</span>
                </Link>
-               <nav className="flex items-center  gap-4 text-gray-500 text-sm">
-                  <Link href="/about">About</Link>
-                  <Link href="/contact">Contact</Link>
-                  <Link href="/projects">Projects</Link>
+               <nav className="md:flex items-center text-black font-semibold   text-sm hidden ">
+                  {session ? (
+                     <>
+                        <Link
+                           href="/about"
+                           className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           <LuListTree className="text-xl" />
+                           Links
+                        </Link>
+                        <Link
+                           href="/contact"
+                           className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           <IoShapesOutline className="text-xl" />
+                           Appearance
+                        </Link>
+                        <Link
+                           href="/projects"
+                           className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           <IoMdSettings className="text-xl" />
+                           Analytics
+                        </Link>
+                        <Link
+                           href="/projects"
+                           className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           <SiGoogleanalytics className="text-xl" />
+                           Settings
+                        </Link>
+                     </>
+                  ) : (
+                     <>
+                        <Link
+                           href="/about"
+                           className=" py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           About
+                        </Link>
+                        <Link
+                           href="/contact"
+                           className=" py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           Contact
+                        </Link>
+                        <Link
+                           href="/projects"
+                           className=" py-3 px-5 hover:bg-gray-100 rounded-[10px]"
+                        >
+                           Projects
+                        </Link>
+                     </>
+                  )}
                </nav>
             </div>
             {session ? (
-               <nav className="flex gap-4 text-sm text-slate-500 items-center">
+               <nav className="flex gap-4 text-sm  items-center">
                   <Image
                      src={session.user?.image || '/images/default-avatar.png'}
-                     width={30}
+                     width={45}
                      height={30}
                      alt={session.user?.name || 'User image'}
-                     className="rounded-full"
+                     className="rounded-full border-black border-[1px] hover:outline-blue-500  cursor-pointer"
                   />
-                  <span className="font-semibold">
-                     {session.user?.name?.split(' ')[0]}
-                  </span>
-                  <LogOutButton />
                </nav>
             ) : (
-               <nav className="flex gap-4 text-sm text-slate-500 items-center">
-                  <Link href="/login">Sign in</Link>
-                  <Link href="/login">Create Account</Link>
+               <nav className="flex gap-2 text-sm text-black items-center">
+                  <Link
+                     href="/login"
+                     className=" py-3 px-5 hover:bg-gray-200 rounded-[10px] bg-gray-100"
+                  >
+                     Sign in
+                  </Link>
+                  <Link
+                     href="/login"
+                     className=" py-3 px-5 hover:bg-gray-700 rounded-[10px] bg-black text-white"
+                  >
+                     Sign up
+                  </Link>
                </nav>
             )}
          </div>

@@ -27,14 +27,18 @@ function HomeForm() {
    }
 
    return (
-      <div>
+      <>
          <form
             onSubmit={handleSubmit}
-            className="inline-flex items-center shadow-lg shadow-gray-500/20"
+            className="inline-flex items-center  shadow-gray-500/20   text-black"
          >
             <span className="bg-white py-4 pl-4">linktree.io/</span>
-            <input type="text" className="py-4 " placeholder="username" />
-            <button type="submit" className="bg-blue-500 text-white py-4 px-6">
+            <input
+               type="text"
+               className="py-4 outline-none "
+               placeholder="username"
+            />
+            <button type="submit" className="bg-blue-500  py-4 px-6 text-white">
                Join Free
             </button>
          </form>
@@ -43,7 +47,7 @@ function HomeForm() {
                {error}
             </p>
          )}
-      </div>
+      </>
    )
 }
 

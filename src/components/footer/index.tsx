@@ -3,14 +3,14 @@ import Link from 'next/link'
 
 function Footer() {
    return (
-      <footer className=" bg-gray-200 py-4 fixed bottom-0 w-full">
+      <footer className="  py-4 w-full border-t-[1px]">
          <div className="max-w-4xl mx-auto px-6 flex justify-between items-center">
             <div>
-               <p className="text-sm text-gray-600">
+               <p className="text-sm ">
                   &copy; {new Date().getFullYear()} LinkTree, Inc. All rights
                </p>
             </div>
-            <nav className="flex gap-4 text-sm text-gray-600">
+            <nav className="flex gap-4 text-sm ">
                <Link href="/privacy">Privacy Policy</Link>
                <Link href="/terms">Terms of Service</Link>
                <Link href="/contact">Contact Us</Link>

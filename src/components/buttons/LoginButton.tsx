@@ -1,40 +1,17 @@
 'use client'
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { FcGoogle } from 'react-icons/fc'
 import { signIn } from 'next-auth/react'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-interface LoginButtonProps {
-   iconName: IconProp
-   text: string
-   onClick: () => void
-}
 
-const LoginButton: React.FC<LoginButtonProps> = ({
-   iconName,
-   text,
-   onClick,
-}) => {
+export const LoginWithGoogle = () => {
    return (
       <button
-         onClick={onClick}
+         onClick={() => signIn('google')}
          className="flex items-center justify-center gap-3 shadow bg-white w-full text-center py-4 hover:shadow-lg"
       >
-         <FontAwesomeIcon icon={iconName} className="h-6" />
-         <span>Sign in with {text}</span>
-      </button>
-   )
-}
+         <FcGoogle className="text-2xl" />
 
-export const LoginWithGoogle: React.FC = () => {
-   return (
-      <LoginButton
-         iconName={faGoogle}
-         text="Google"
-         onClick={() => {
-            console.log('clicked')
-            signIn('google')
-         }}
-      />
+         <span>Sign in with Google</span>
+      </button>
    )
 }

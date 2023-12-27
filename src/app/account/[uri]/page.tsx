@@ -3,13 +3,9 @@ import { getServerSession } from 'next-auth'
 import React from 'react'
 import { redirect } from 'next/navigation'
 
-type SearchParams = {
-   username?: string
-}
-
-async function AccountPage({ searchParams }: { searchParams: SearchParams }) {
+async function AccountPage() {
    const sesion = await getServerSession(authOptions)
-   const username: string = searchParams.username || ''
+   const username = sesion?.user?.name
 
    if (!sesion) {
       redirect('/login')
