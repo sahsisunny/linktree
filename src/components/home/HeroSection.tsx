@@ -10,12 +10,12 @@ async function HeroSection() {
    const session = await getServerSession(authOptions)
    const uri = await getUri(session)
    return (
-      <section className="flex flex-col justify-center h-screen  p-20">
-         <h1 className="text-6xl font-bold">
+      <section className="flex flex-col justify-center h-screen sm:p-20 p-6">
+         <h1 className="sm:text-6xl text-4xl font-bold">
             Your one link <br />
             for everything
          </h1>
-         <h2 className="  text-xl mt-6">
+         <h2 className="text-xl mt-6">
             Share your profile, social media, and more with a single link.
          </h2>
          {!uri && <HomeForm />}

@@ -30,15 +30,20 @@ function HomeForm() {
       <>
          <form
             onSubmit={handleSubmit}
-            className="inline-flex items-center  shadow-gray-500/20   text-black"
+            className="flex items-center  shadow-gray-500/20 text-black sm:flex-row flex-col mt-10"
          >
-            <span className="bg-white py-4 pl-4">linktree.io/</span>
-            <input
-               type="text"
-               className="py-4 outline-none "
-               placeholder="username"
-            />
-            <button type="submit" className="bg-blue-500  py-4 px-6 text-white">
+            <div className="flex border-r border-gray-300">
+               <span className="bg-white py-4 pl-4">linktree.io/</span>
+               <input
+                  type="text"
+                  className="py-4 outline-none"
+                  placeholder="username"
+               />
+            </div>
+            <button
+               type="submit"
+               className="bg-blue-500  py-4 px-6 text-white rounded-lg sm:rounded-none mt-5 sm:mt-0"
+            >
                Join Free
             </button>
          </form>
