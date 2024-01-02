@@ -11,10 +11,10 @@ async function AccountPage() {
       redirect('/login')
    }
    return (
-      <div className="flex flex-col items-center justify-center py-2">
+      <section className="flex flex-col justify-center h-screen  p-20">
          <h1 className="text-3xl font-bold">Account</h1>
          <p className="text-xl">Username: {username}</p>
-      </div>
+      </section>
    )
 }
 

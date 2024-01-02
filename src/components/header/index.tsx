@@ -9,6 +9,7 @@ import { SiGoogleanalytics } from 'react-icons/si'
 import { IoMdSettings } from 'react-icons/io'
 
 import authOptions from '@/utils/authOptions'
+import LogOutButton from '../buttons/LogOutButton'
 
 async function Header() {
    const session = await getServerSession(authOptions)
@@ -89,6 +90,7 @@ async function Header() {
                      alt={session.user?.name || 'User image'}
                      className="rounded-full border-black border-[1px] hover:outline-blue-500  cursor-pointer"
                   />
+                  <LogOutButton />
                </nav>
             ) : (
                <nav className="flex gap-2 text-sm text-black items-center">

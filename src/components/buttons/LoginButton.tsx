@@ -7,7 +7,7 @@ export const LoginWithGoogle = () => {
    return (
       <button
          onClick={() => signIn('google')}
-         className="flex items-center justify-center gap-3 shadow bg-white w-full text-center py-4 hover:shadow-lg"
+         className="flex items-center justify-center gap-3 shadow bg-white text-black rounded-md w-full text-center py-4 hover:shadow-lg"
       >
          <FcGoogle className="text-2xl" />
 
