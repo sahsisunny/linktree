@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 function Footer() {
    return (
-      <footer className="  py-4 w-full border-t-[1px]">
-         <div className="max-w-4xl mx-auto px-6 flex justify-between items-center">
+      <footer className="py-4 w-full border-t-[1px]">
+         <div className="max-w-4xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row justify-between items-center">
             <div>
                <p className="text-sm ">
                   &copy; {new Date().getFullYear()} LinkTree, Inc. All rights

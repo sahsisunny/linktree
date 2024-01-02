@@ -14,8 +14,8 @@ import LogOutButton from '../buttons/LogOutButton'
 async function Header() {
    const session = await getServerSession(authOptions)
    return (
-      <header className=" w-full sticky top-10 z-50 shadow-md">
-         <div className="max-w-[90vw] mx-auto flex justify-between px-4 bg-white py-3 rounded-[35px]  ">
+      <header className="w-full sticky top-10 z-50 shadow-md">
+         <div className="max-w-[90vw] mx-auto flex justify-between px-4 bg-white py-2 rounded-[35px]  ">
             <div className="flex gap-6 ">
                <Link
                   href="/"
@@ -88,7 +88,7 @@ async function Header() {
                      width={45}
                      height={30}
                      alt={session.user?.name || 'User image'}
-                     className="rounded-full border-black border-[1px] hover:outline-blue-500  cursor-pointer"
+                     className="rounded-full cursor-pointer"
                   />
                   <LogOutButton />
                </nav>
