@@ -1,14 +1,14 @@
 'use server'
 import { UrlModel, getUrlByUrl } from '@/models/url'
 import mongoose from 'mongoose'
-import { getPageTitleWithPuppeteer } from '@/utils/getTitleFromUrl'
+import { getDomainFromUrl } from '@/utils/getDomainFromUrl'
 
 export default async function grabUrl(email: string, url: string) {
    const MONGO_URL = process.env.MONGO_URL
    if (!MONGO_URL) {
       throw new Error('Invalid/Missing environment variable: "MONGO_URL"')
    }
-   const urlTitle = await getPageTitleWithPuppeteer(url)
+   const urlTitle = await getDomainFromUrl(url)
    if (!urlTitle) {
       return {
          error: 'Invalid URL',
