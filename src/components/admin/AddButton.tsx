@@ -25,7 +25,7 @@ const AddButton: React.FC<Props> = ({ email }) => {
                   <FaPlus className="text-xl" />
                   Add new
                </button>
-               <div className="flex justify-between gap-4 mt-4">
+               <div className="flex justify-between gap-4 mt-4 hidden">
                   <button className="flex justify-center gap-2 rounded-[30px] text-white p-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100">
                      <BsCardHeading className="text-xl" />
                      Add Header

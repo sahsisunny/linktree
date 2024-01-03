@@ -41,7 +41,7 @@ export const EditInput: React.FC<EditInputProps> = ({ initialText }) => {
          {isEditing ? (
             <input
                type="text"
-               className="text-lg font-bold w-full outline-none bg-transparent focus:border-b-2 border-white"
+               className="font-semibold w-full outline-none bg-transparent focus:border-b-2 border-white"
                value={inputValue}
                onChange={handleInputChange}
                onKeyDown={handleEnterKey}
@@ -49,7 +49,9 @@ export const EditInput: React.FC<EditInputProps> = ({ initialText }) => {
             />
          ) : (
             <>
-               <h2 className="text-lg font-bold">{inputValue}</h2>
+               <p className="font-semibold max-w-[100%] whitespace-nowrap overflow-hidden overflow-ellipsis">
+                  {inputValue}
+               </p>
                <button className="text-xl" onClick={handleEditClick}>
                   <MdOutlineModeEdit className="text-xl" />
                </button>

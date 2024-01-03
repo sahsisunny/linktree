@@ -10,3 +10,8 @@ export function getDomainFromUrl(url: string): string | null {
       return null
    }
 }
+
+export function extractBaseUrl(fullUrl: string): string {
+   const url = new URL(fullUrl)
+   return `${url.protocol}//${url.host}`
+}

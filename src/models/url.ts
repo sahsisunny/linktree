@@ -56,7 +56,3 @@ export const updateDeleted = async (url: string, newDeleted: boolean) => {
 export const updateArchived = async (url: string, newArchived: boolean) => {
    return await UrlModel.updateOne({ url: url }, { isArchived: newArchived })
 }
-
-export const getAllUrls = async (email: string) => {
-   return await UrlModel.find({ email: email })
-}

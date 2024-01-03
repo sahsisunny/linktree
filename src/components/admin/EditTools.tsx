@@ -10,7 +10,7 @@ function EditTools() {
    const [isLocked, setIsLocked] = useState(false)
    const [isArchived, setIsArchived] = useState(false)
    return (
-      <div className="flex gap-2 w-full">
+      <div className="flex gap-2 w-[full]">
          <MdDeleteOutline className="text-2xl" />
          {isArchived ? (
             <MdOutlineUnarchive

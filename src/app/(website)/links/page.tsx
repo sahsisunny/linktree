@@ -5,21 +5,24 @@ import React from 'react'
 import authOptions from '@/utils/authOptions'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
+import getAllUrls from '@/actions/getAllUrls '
+import { Url } from '@/types/url'
 
 async function Links() {
    const sesion = await getServerSession(authOptions)
    const email = sesion?.user?.email || ''
+   const urls = await getAllUrls(email)
 
    if (!sesion) {
       redirect('/login')
    }
    return (
-      <section className="flex justify-start h-screen xl:px-20 p-6 mt-8">
+      <section className="flex justify-start xl:px-20 p-6 mt-8">
          <div className="flex flex-col gap-4 md:w-[70%] w-full">
             <AddButton email={email} />
-            <EditLinks />
-            <EditLinks />
-            <EditLinks />
+            {urls.map((url: Url, index: number) => (
+               <EditLinks key={index} url={url.url} title={url.title} />
+            ))}
          </div>
          <MobilePreview />
       </section>

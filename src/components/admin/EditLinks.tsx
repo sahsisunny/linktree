@@ -4,9 +4,18 @@ import { RiDraggable } from 'react-icons/ri'
 import { EditInput } from '@/components/admin/EditInput'
 import CheckBoxInput from '@/components/admin/CheckBoxInput'
 import EditTools from '@/components/admin/EditTools'
+import { extractBaseUrl } from '@/utils/getDomainFromUrl'
 import React from 'react'
+import Image from 'next/image'
 
-function EditLinks() {
+interface EditLinksProps {
+   url: string
+   title: string
+   isArchived?: boolean
+   isPinned?: boolean
+}
+
+function EditLinks({ url, title, isArchived, isPinned }: EditLinksProps) {
    const dragItem = React.useRef<HTMLDivElement>(null)
    const dragItemNode = dragItem.current
    const dragItemIndex = 0
@@ -25,20 +34,33 @@ function EditLinks() {
       >
          <div
             onDragStart={handleDragStart}
-            className="sm:flex justify-center items-center cursor-pointer hidden"
+            className="sm:flex justify-center items-center cursor-pointer hidden w-1/10 "
          >
             <RiDraggable className="text-3xl" />
          </div>
-         <div className="w-full flex flex-col gap-2 p-4">
-            <div className="flex justify-between gap-2">
-               <div className="flex flex-col justify-between gap-2 w-full">
-                  <EditInput initialText="Link Title" />
-                  <EditInput initialText="Link Title" />
+
+         <div className="flex flex-col gap-2 p-4 w-full">
+            <div className="flex  gap-2 w-full">
+               <div className="flex justify-center items-center p-2 w-[50px]">
+                  <Image
+                     src={`https://www.google.com/s2/favicons?sz=64&domain_url=${extractBaseUrl(
+                        url,
+                     )}&sz=256`}
+                     alt=""
+                     className="rounded-full"
+                     width={50}
+                     height={50}
+                  />
+               </div>
+               <div className="flex flex-col gap-2 w-full">
+                  <EditInput initialText={title || 'Link Title'} />
+                  <EditInput initialText={url || 'Link URL'} />
+                  <EditTools />
                </div>
             </div>
-            <EditTools />
          </div>
-         <div className="flex justify-center items-center sm:p-4 p-0">
+
+         <div className="flex justify-center items-center sm:p-4 p-2 w-1/10 ">
             <CheckBoxInput />
          </div>
       </div>
