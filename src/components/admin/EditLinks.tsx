@@ -21,24 +21,24 @@ function EditLinks() {
          ref={dragItem}
          draggable
          data-index={dragItemIndex}
-         className="w-full rounded-[30px] p-2 bg-white text-black flex bg border-2"
+         className="w-full rounded-[30px] bg-white text-black flex bg border-2"
       >
          <div
             onDragStart={handleDragStart}
-            className="flex justify-center items-center cursor-pointer"
+            className="sm:flex justify-center items-center cursor-pointer hidden"
          >
-            <RiDraggable className="text-4xl" />
+            <RiDraggable className="text-3xl" />
          </div>
-         <div className="w-full flex flex-col gap-4 p-4">
+         <div className="w-full flex flex-col gap-2 p-4">
             <div className="flex justify-between gap-2">
-               <div className="flex flex-col justify-between gap-4 w-full">
+               <div className="flex flex-col justify-between gap-2 w-full">
                   <EditInput initialText="Link Title" />
                   <EditInput initialText="Link Title" />
                </div>
             </div>
             <EditTools />
          </div>
-         <div className="flex justify-center items-center p-4">
+         <div className="flex justify-center items-center sm:p-4 p-0">
             <CheckBoxInput />
          </div>
       </div>
