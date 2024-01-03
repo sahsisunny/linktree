@@ -21,7 +21,7 @@ function EditLinks() {
          ref={dragItem}
          draggable
          data-index={dragItemIndex}
-         className="w-full rounded-[30px] bg-white text-black flex bg border-2"
+         className="w-full rounded-[30px] bg-white text-black flex bg border-x-2"
       >
          <div
             onDragStart={handleDragStart}

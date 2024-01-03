@@ -14,8 +14,8 @@ import LogOutButton from '../buttons/LogOutButton'
 async function Header() {
    const session = await getServerSession(authOptions)
    return (
-      <header className="w-full sticky top-10 z-50 shadow-md">
-         <div className="max-w-[90vw] mx-auto flex justify-between px-4 bg-white py-2 rounded-[35px]  ">
+      <header className="w-full sticky top-10 z-50 shadow-md xl:px-20 px-6">
+         <div className="w-full mx-auto flex justify-between px-4 bg-white py-2 rounded-[35px]  ">
             <div className="flex gap-6 ">
                <Link
                   href="/"
@@ -29,7 +29,7 @@ async function Header() {
                   {session ? (
                      <>
                         <Link
-                           href="/about"
+                           href="/links"
                            className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
                         >
                            <LuListTree className="text-xl" />
