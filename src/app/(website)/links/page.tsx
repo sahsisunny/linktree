@@ -7,17 +7,19 @@ import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import getAllUrls from '@/actions/getAllUrls '
 import { Url } from '@/types/url'
+import getUri from '@/actions/getUri'
 
 async function Links() {
    const sesion = await getServerSession(authOptions)
    const email = sesion?.user?.email || ''
-   const urls = await getAllUrls(email)
+   const uri = await getUri(email)
+   const urls = await getAllUrls(uri)
 
    if (!sesion) {
       redirect('/login')
    }
    return (
-      <section className="flex justify-start xl:px-20 p-6 mt-8">
+      <section className="flex justify-start min-h-screen xl:px-20 p-6 mt-8">
          <div className="flex flex-col gap-4 md:w-[70%] w-full">
             <AddButton email={email} />
             {urls.map((url: Url, index: number) => (

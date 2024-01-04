@@ -43,9 +43,9 @@ function EditLinks({ url, title, isArchived, isPinned }: EditLinksProps) {
             <div className="flex  gap-2 w-full">
                <div className="flex justify-center items-center p-2 w-[50px]">
                   <Image
-                     src={`https://www.google.com/s2/favicons?sz=64&domain_url=${extractBaseUrl(
+                     src={`https://www.google.com/s2/favicons?sz=126&domain_url=${extractBaseUrl(
                         url,
-                     )}&sz=256`}
+                     )}`}
                      alt=""
                      className="rounded-full"
                      width={50}

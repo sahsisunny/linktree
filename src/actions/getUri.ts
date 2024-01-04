@@ -2,8 +2,7 @@
 import { getUriByEmail } from '@/models/page'
 import mongoose from 'mongoose'
 
-export default async function getUri(session: any) {
-   const email = session?.user?.email
+export default async function getUri(email: string) {
    const MONGO_URL = process.env.MONGO_URL
    if (!MONGO_URL) {
       throw new Error('Invalid/Missing environment variable: "MONGO_URL"')

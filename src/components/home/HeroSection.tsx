@@ -8,7 +8,9 @@ import HomeOutput from '@/components/home/HomeOutput'
 
 async function HeroSection() {
    const session = await getServerSession(authOptions)
-   const uri = await getUri(session)
+   const email = session?.user?.email
+   if (!email) return null
+   const uri = await getUri(email)
    return (
       <section className="flex flex-col justify-center h-screen sm:p-20 p-6">
          <h1 className="sm:text-6xl text-4xl font-bold">

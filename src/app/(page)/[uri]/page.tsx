@@ -1,33 +1,27 @@
 import LinkItem from '@/components/publicPage/LinkItem'
 import ProfileSection from '@/components/publicPage/ProfileSection'
+import getAllUrls from '@/actions/getAllUrls '
+import React from 'react'
+import { Url } from '@/types/url'
 
-function PublicPage() {
+async function PublicPage() {
+   const uri = 'sunny'
+   if (!uri) {
+      return <div>404</div>
+   }
+   const urls = await getAllUrls(uri)
+
    return (
-      <section className="flex flex-col justify-center items-center sm:p-20 p-4 w-full">
+      <section className="flex flex-col gap-4 justify-center items-center sm:p-20 p-4 w-full">
          <ProfileSection
             username="sahsisunny"
             bio="I'm a Software Engineer"
             image="https://avatars.githubusercontent.com/u/70854507?v=4"
          />
 
-         <LinkItem url="https://twitter.com/sahsisunny" title="Twitter" />
-         <LinkItem url="https://github.com/sahsisunny" title="Github" />
-         <LinkItem
-            url="https://www.linkedin.com/in/sahsisunny/"
-            title="LinkedIn"
-         />
-         <LinkItem
-            url="https://www.instagram.com/sahsisunny/"
-            title="Instagram"
-         />
-         <LinkItem
-            url="https://www.facebook.com/sahsisunny/"
-            title="Facebook"
-         />
-         <LinkItem
-            url="https://www.youtube.com/channel/UCZb8J0r9YyBz2qOJlqLXZ0w"
-            title="YouTube"
-         />
+         {urls.map((url: Url) => (
+            <LinkItem key={url.url} url={url.url} title={url.title} />
+         ))}
       </section>
    )
 }

@@ -3,7 +3,7 @@ import { Schema, models, model } from 'mongoose'
 const UrlSchema = new Schema(
    {
       url: { type: String },
-      email: { type: String },
+      uri: { type: String },
       title: { type: String },
       addedAt: { type: Date, default: Date.now() },
       updatedAt: { type: Date, default: Date.now() },
@@ -17,10 +17,6 @@ const UrlSchema = new Schema(
 )
 
 export const UrlModel = models?.Url || model('Url', UrlSchema)
-
-export async function getUrlByEmail(email: string) {
-   return await UrlModel.findOne({ email: email })
-}
 
 export async function getUrlByShortUrl(shortUrl: string) {
    return await UrlModel.findOne({ shortUrl: shortUrl })

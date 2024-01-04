@@ -3,7 +3,7 @@ import { UrlModel, getUrlByUrl } from '@/models/url'
 import mongoose from 'mongoose'
 import { getDomainFromUrl } from '@/utils/getDomainFromUrl'
 
-export default async function grabUrl(email: string, url: string) {
+export default async function grabUrl(uri: string, url: string) {
    const MONGO_URL = process.env.MONGO_URL
    if (!MONGO_URL) {
       throw new Error('Invalid/Missing environment variable: "MONGO_URL"')
@@ -23,10 +23,9 @@ export default async function grabUrl(email: string, url: string) {
             data: JSON.parse(JSON.stringify(page)),
          }
       }
-      console.log(`Creating page for ${url} with email ${email}`)
       const pageDoc = await UrlModel.create({
-         email: email,
          url: url,
+         uri: uri,
          title: urlTitle,
          shortUrl: url,
          order: 0,

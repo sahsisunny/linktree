@@ -8,7 +8,7 @@ export default function RootLayout({
    return (
       <html lang="en">
          <title>Sunny Sahsi</title>
-         <body className="back">
+         <body>
             <main>{children}</main>
          </body>
       </html>

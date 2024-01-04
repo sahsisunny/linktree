@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 import grabUrl from '@/actions/grabUrl'
-
+import getUri from '@/actions/getUri'
 interface Props {
    setClose: () => void
    email: string
@@ -11,7 +11,8 @@ interface Props {
 const AddUrl: React.FC<Props> = ({ setClose, email }) => {
    const [url, setUrl] = useState('')
    const onSubmit = async () => {
-      const res = await grabUrl(email, url)
+      const uri = await getUri(email)
+      const res = await grabUrl(uri, url)
       if (res?.error) {
          console.log(res.error)
       } else {

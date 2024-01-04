@@ -1,6 +1,6 @@
 export interface Url {
    url: string
-   email: string
+   uri: string
    title: string
    addedAt: Date
    updatedAt: Date
