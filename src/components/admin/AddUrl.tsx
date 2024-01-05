@@ -19,6 +19,7 @@ const AddUrl: React.FC<Props> = ({ setClose, email }) => {
          console.log(res.error)
       } else {
          setClose()
+         window.location.reload()
       }
    }
    return (
@@ -38,6 +39,7 @@ const AddUrl: React.FC<Props> = ({ setClose, email }) => {
                type="text"
                placeholder="URL"
                value={url}
+               autoFocus
                onChange={(e) => setUrl(e.target.value)}
             />
 
