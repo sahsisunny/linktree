@@ -20,3 +20,10 @@ async function AccountPage() {
 }
 
 export default AccountPage
+
+export function generateMetadata() {
+   return {
+      title: `Account - Linktree`,
+      description: `Account page for Linktree.`,
+   }
+}

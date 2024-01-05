@@ -33,3 +33,10 @@ async function Links() {
 }
 
 export default Links
+
+export function generateMetadata() {
+   return {
+      title: `Links - Linktree`,
+      description: `Add, edit and remove links from your Linktree.`,
+   }
+}

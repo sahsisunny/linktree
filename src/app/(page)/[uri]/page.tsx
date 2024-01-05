@@ -8,7 +8,11 @@ import NoUserFound from '@/components/publicPage/NoUserFound'
 import ProfileSection from '@/components/publicPage/ProfileSection'
 import { Url } from '@/types/url'
 
-async function PublicPage({ params }: { params: { uri: string } }) {
+export default async function PublicPage({
+   params,
+}: {
+   params: { uri: string }
+}) {
    const uri = params.uri
    const uriExists = await uriExist(uri)
    if (!uriExists) {
@@ -33,4 +37,10 @@ async function PublicPage({ params }: { params: { uri: string } }) {
    )
 }
 
-export default PublicPage
+export function generateMetadata({ params }: { params: { uri: string } }) {
+   return {
+      title: `${
+         params.uri.charAt(0).toUpperCase() + params.uri.slice(1)
+      }'s Links`,
+   }
+}

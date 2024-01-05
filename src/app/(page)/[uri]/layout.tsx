@@ -7,7 +7,6 @@ export default function RootLayout({
 }) {
    return (
       <html lang="en">
-         <title>Sunny Sahsi</title>
          <body>
             <main>{children}</main>
          </body>

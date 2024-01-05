@@ -21,3 +21,9 @@ export default async function Login() {
       </section>
    )
 }
+export function generateMetadata() {
+   return {
+      title: `Sign In - Linktree`,
+      description: `Sign in with Google to start using Linktree.`,
+   }
+}

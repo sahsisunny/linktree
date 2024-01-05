@@ -12,3 +12,9 @@ export default async function HomePage() {
       </>
    )
 }
+export function generateMetadata() {
+   return {
+      title: `Linktree - All your important links in one place`,
+      description: `Linktree is a free tool for optimising your internet presence, whether you’re a blogger, an artist or run a content platform. You get one link to house all the content you’re driving followers to. Share that link anywhere, like your Instagram bio, Facebook posts or Twitch profile. Let your content live longer than the feed.`,
+   }
+}
