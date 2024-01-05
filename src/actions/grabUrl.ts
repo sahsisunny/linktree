@@ -1,21 +1,17 @@
 'use server'
-import mongoose from 'mongoose'
-
+import mongoConnect from '@/libs/mongoConnect'
 import { getUrlByUrl, UrlModel } from '@/models/url'
 import { getDomainFromUrl } from '@/utils/getDomainFromUrl'
 
 export default async function grabUrl(uri: string, url: string) {
-   const MONGO_URL = process.env.MONGO_URL
-   if (!MONGO_URL) {
-      throw new Error('Invalid/Missing environment variable: "MONGO_URL"')
-   }
+   mongoConnect()
+
    const urlTitle = await getDomainFromUrl(url)
    if (!urlTitle) {
       return {
          error: 'Invalid URL',
       }
    }
-   mongoose.connect(MONGO_URL)
    try {
       const page = await getUrlByUrl(url)
       if (page) {

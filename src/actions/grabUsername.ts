@@ -1,8 +1,8 @@
 'use server'
 
-import mongoose from 'mongoose'
 import { getServerSession } from 'next-auth'
 
+import mongoConnect from '@/libs/mongoConnect'
 import { getPageByEmail, PageModel } from '@/models/page'
 import authOptions from '@/utils/authOptions'
 
@@ -14,11 +14,8 @@ export default async function grabUsername(username: string) {
    if (!email) {
       throw new Error('Invalid/Missing session: "email"')
    }
-   const MONGO_URL = process.env.MONGO_URL
-   if (!MONGO_URL) {
-      throw new Error('Invalid/Missing environment variable: "MONGO_URL"')
-   }
-   mongoose.connect(MONGO_URL)
+   mongoConnect()
+
    try {
       const page = await getPageByEmail(email)
       if (page) {

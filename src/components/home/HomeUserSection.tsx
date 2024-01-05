@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { User } from '@/types/user.s'
+import { User } from '@/types/user'
 
 import UserItem from './UserItem'
 

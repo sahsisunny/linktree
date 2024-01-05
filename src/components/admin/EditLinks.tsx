@@ -53,8 +53,8 @@ function EditLinks({ url, title, isArchived, isPinned }: EditLinksProps) {
                   />
                </div>
                <div className="flex flex-col gap-2 w-full">
-                  <EditInput initialText={title || 'Link Title'} />
-                  <EditInput initialText={url || 'Link URL'} />
+                  <EditInput initialText={title} />
+                  <EditInput initialText={url} />
                   <EditTools />
                </div>
             </div>
