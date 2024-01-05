@@ -2,7 +2,7 @@ import { FaEnvelope, FaUser, FaImage, FaLink } from 'react-icons/fa'
 
 export default function Privacy() {
    return (
-      <section className="flex flex-col justify-center sm:p-20 p-6 my-auto">
+      <section className="flex flex-col justify-center sm:p-20 p-6 py-16 my-auto">
          <div className="mx-auto flex flex-col gap-6 p-6 shadow text-black bg-white rounded-[20px]">
             <h1 className="text-3xl font-bold mb-4 text-center underline">
                Privacy Policy
