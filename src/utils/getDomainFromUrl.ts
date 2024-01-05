@@ -6,7 +6,7 @@ export function getDomainFromUrl(url: string): string | null {
       const domain = parts.length > 1 ? parts[parts.length - 2] : parts[0]
       return domain.charAt(0).toUpperCase() + domain.slice(1)
    } catch (error) {
-      console.error('Error extracting domain from URL')
+      console.log(error)
       return null
    }
 }

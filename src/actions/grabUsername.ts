@@ -8,6 +8,8 @@ import { getServerSession } from 'next-auth'
 export default async function grabUsername(username: string) {
    const session = await getServerSession(authOptions)
    const email = session?.user?.email
+   const image = session?.user?.image
+   const name = session?.user?.name
    if (!email) {
       throw new Error('Invalid/Missing session: "email"')
    }
@@ -21,7 +23,12 @@ export default async function grabUsername(username: string) {
       if (page) {
          return JSON.parse(JSON.stringify(page))
       }
-      const pageDoc = await PageModel.create({ uri: username, email: email })
+      const pageDoc = await PageModel.create({
+         uri: username,
+         email: email,
+         image: image,
+         name: name,
+      })
       return JSON.parse(JSON.stringify(pageDoc))
    } catch (error) {
       return { error: 'Something went wrong' }

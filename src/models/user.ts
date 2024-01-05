@@ -13,6 +13,8 @@ const userSchema = new Schema<User & Document>({
    image: { type: String, required: true },
 })
 
-const UserModel = model<User & Document>('User', userSchema)
+export const UserModel = model<User & Document>('User', userSchema)
 
-export default UserModel
+export const getAllUsers = async () => {
+   return await UserModel.find()
+}
