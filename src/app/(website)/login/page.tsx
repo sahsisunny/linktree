@@ -1,6 +1,7 @@
-import { LoginWithGoogle } from '@/components/buttons/LoginButton'
-import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
+
+import { LoginWithGoogle } from '@/components/buttons/LoginButton'
 import authOptions from '@/utils/authOptions'
 
 export default async function Login() {

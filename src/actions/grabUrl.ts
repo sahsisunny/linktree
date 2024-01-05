@@ -1,6 +1,7 @@
 'use server'
-import { UrlModel, getUrlByUrl } from '@/models/url'
 import mongoose from 'mongoose'
+
+import { getUrlByUrl, UrlModel } from '@/models/url'
 import { getDomainFromUrl } from '@/utils/getDomainFromUrl'
 
 export default async function grabUrl(uri: string, url: string) {

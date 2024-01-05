@@ -1,9 +1,10 @@
 'use server'
 
-import { PageModel, getPageByEmail } from '@/models/page'
-import authOptions from '@/utils/authOptions'
 import mongoose from 'mongoose'
 import { getServerSession } from 'next-auth'
+
+import { getPageByEmail, PageModel } from '@/models/page'
+import authOptions from '@/utils/authOptions'
 
 export default async function grabUsername(username: string) {
    const session = await getServerSession(authOptions)

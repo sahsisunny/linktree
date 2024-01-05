@@ -1,7 +1,8 @@
 'use client'
-import grabUsername from '@/actions/grabUsername'
 import { signIn } from 'next-auth/react'
 import React from 'react'
+
+import grabUsername from '@/actions/grabUsername'
 
 function HomeForm() {
    const [error, setError] = React.useState('')

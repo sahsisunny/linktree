@@ -1,12 +1,12 @@
 'use client'
+import Image from 'next/image'
+import React from 'react'
 import { RiDraggable } from 'react-icons/ri'
 
-import { EditInput } from '@/components/admin/EditInput'
 import CheckBoxInput from '@/components/admin/CheckBoxInput'
+import { EditInput } from '@/components/admin/EditInput'
 import EditTools from '@/components/admin/EditTools'
 import { extractBaseUrl } from '@/utils/getDomainFromUrl'
-import React from 'react'
-import Image from 'next/image'
 
 interface EditLinksProps {
    url: string

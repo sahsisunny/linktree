@@ -1,6 +1,7 @@
 'use server'
-import { getUriByEmail } from '@/models/page'
 import mongoose from 'mongoose'
+
+import { getUriByEmail } from '@/models/page'
 
 export default async function getUri(email: string) {
    const MONGO_URL = process.env.MONGO_URL

@@ -1,11 +1,13 @@
 'use client'
-import React from 'react'
-import { useState } from 'react'
-import { MdDeleteOutline } from 'react-icons/md'
-import { MdOutlineUnarchive } from 'react-icons/md'
-import { MdOutlineArchive } from 'react-icons/md'
-import { MdLockOutline } from 'react-icons/md'
-import { MdLockOpen } from 'react-icons/md'
+import React, { useState } from 'react'
+import {
+   MdDeleteOutline,
+   MdLockOpen,
+   MdLockOutline,
+   MdOutlineArchive,
+   MdOutlineUnarchive,
+} from 'react-icons/md'
+
 function EditTools() {
    const [isLocked, setIsLocked] = useState(false)
    const [isArchived, setIsArchived] = useState(false)

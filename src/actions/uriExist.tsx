@@ -1,6 +1,7 @@
 'use server'
-import { getUriByUri } from '@/models/page'
 import mongoose from 'mongoose'
+
+import { getUriByUri } from '@/models/page'
 
 export default async function uriExist(uri: string) {
    const MONGO_URL = process.env.MONGO_URL

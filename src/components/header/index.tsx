@@ -1,14 +1,15 @@
-import React from 'react'
-import Link from 'next/link'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 import { FaLink } from 'react-icons/fa'
-import { LuListTree } from 'react-icons/lu'
-import { IoShapesOutline } from 'react-icons/io5'
-import { SiGoogleanalytics } from 'react-icons/si'
 import { IoMdSettings } from 'react-icons/io'
+import { IoShapesOutline } from 'react-icons/io5'
+import { LuListTree } from 'react-icons/lu'
+import { SiGoogleanalytics } from 'react-icons/si'
 
 import authOptions from '@/utils/authOptions'
+
 import LogOutButton from '../buttons/LogOutButton'
 
 async function Header() {

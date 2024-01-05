@@ -1,6 +1,7 @@
 'use server'
-import { PageModel } from '@/models/page'
 import mongoose from 'mongoose'
+
+import { PageModel } from '@/models/page'
 
 export default async function getAllUsers() {
    const MONGO_URL = process.env.MONGO_URL

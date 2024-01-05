@@ -1,6 +1,7 @@
-import React from 'react'
 import Link from 'next/link'
+import React from 'react'
 import { FaLink } from 'react-icons/fa'
+
 interface Props {
    uri: string
 }

@@ -1,9 +1,10 @@
 'use client'
+import Image from 'next/image'
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
-import getUri from '@/actions/getUri'
 import { LuImage } from 'react-icons/lu'
-import Image from 'next/image'
+
+import getUri from '@/actions/getUri'
 
 interface Props {
    setClose: () => void

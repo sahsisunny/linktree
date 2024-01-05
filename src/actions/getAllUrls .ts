@@ -1,6 +1,7 @@
 'use server'
-import { UrlModel } from '@/models/url'
 import mongoose from 'mongoose'
+
+import { UrlModel } from '@/models/url'
 
 export default async function getAllUrls(uri: string) {
    const MONGO_URL = process.env.MONGO_URL

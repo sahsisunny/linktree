@@ -1,10 +1,10 @@
 'use server'
-import getUri from '@/actions/getUri'
-
-import authOptions from '@/utils/authOptions'
 import { getServerSession } from 'next-auth'
+
+import getUri from '@/actions/getUri'
 import HomeForm from '@/components/home/HomeForm'
 import HomeOutput from '@/components/home/HomeOutput'
+import authOptions from '@/utils/authOptions'
 
 async function HeroSection() {
    const session = await getServerSession(authOptions)

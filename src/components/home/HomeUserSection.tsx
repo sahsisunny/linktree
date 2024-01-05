@@ -1,6 +1,8 @@
 import React from 'react'
-import UserItem from './UserItem'
+
 import { User } from '@/types/user.s'
+
+import UserItem from './UserItem'
 
 type Props = {
    users: User[]

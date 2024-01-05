@@ -1,8 +1,10 @@
 'use client'
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
-import grabUrl from '@/actions/grabUrl'
+
 import getUri from '@/actions/getUri'
+import grabUrl from '@/actions/grabUrl'
+
 interface Props {
    setClose: () => void
    email: string

@@ -1,10 +1,11 @@
-import LinkItem from '@/components/publicPage/LinkItem'
-import ProfileSection from '@/components/publicPage/ProfileSection'
+import React from 'react'
+
 import getAllUrls from '@/actions/getAllUrls '
 import uriExist from '@/actions/uriExist'
-import React from 'react'
-import { Url } from '@/types/url'
+import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'
+import ProfileSection from '@/components/publicPage/ProfileSection'
+import { Url } from '@/types/url'
 
 async function PublicPage({ params }: { params: { uri: string } }) {
    const uri = params.uri

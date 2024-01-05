@@ -1,7 +1,8 @@
-import typedClientPromise from '@/libs/mongoClient'
-import { MongoDBAdapter } from '@auth/mongodb-adapter'
 import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
+
+import typedClientPromise from '@/libs/mongoClient'
+import { MongoDBAdapter } from '@auth/mongodb-adapter'
 
 let clientId = process.env.GOOGLE_CLIENT_ID
 let clientSecret = process.env.GOOGLE_CLIENT_SECRET

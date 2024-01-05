@@ -1,7 +1,8 @@
-import authOptions from '@/utils/authOptions'
 import { getServerSession } from 'next-auth'
-import React from 'react'
 import { redirect } from 'next/navigation'
+import React from 'react'
+
+import authOptions from '@/utils/authOptions'
 
 async function AccountPage() {
    const sesion = await getServerSession(authOptions)
