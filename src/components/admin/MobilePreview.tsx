@@ -1,14 +1,14 @@
 import React from 'react'
 
-function MobilePreview() {
+function MobilePreview({ uri }: { uri: string }) {
    return (
       <div className="md:flex w-[25%] justify-center h-auto  fixed top-25 xl:right-20 right-6 hidden ">
          <div className="bg-black xl:w-[90%] w-full h-[80vh] rounded-[30px] shadow-lg py-6 px-4">
             <iframe
-               src="/sunny"
+               src={uri}
                width="100%"
                height="100%"
-               title="sunny"
+               title={`${uri} preview`}
                allowTransparency={true}
                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                className="rounded-2xl"

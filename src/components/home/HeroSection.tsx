@@ -9,20 +9,13 @@ import authOptions from '@/utils/authOptions'
 async function HeroSection() {
    const session = await getServerSession(authOptions)
    const email = session?.user?.email
-   if (!email) return null
+   if (!email) return <HomeForm />
    const uri = await getUri(email)
    return (
-      <section className="flex flex-col justify-center h-screen sm:p-20 p-6">
-         <h1 className="sm:text-6xl text-4xl font-bold">
-            Your one link <br />
-            for everything
-         </h1>
-         <h2 className="text-xl mt-6">
-            Share your profile, social media, and more with a single link.
-         </h2>
+      <>
          {!uri && <HomeForm />}
          {!!uri && <HomeOutput uri={uri} />}
-      </section>
+      </>
    )
 }
 

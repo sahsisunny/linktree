@@ -3,6 +3,7 @@ import { signIn } from 'next-auth/react'
 import React from 'react'
 
 import grabUsername from '@/actions/grabUsername'
+import uriExist from '@/actions/uriExist'
 
 function HomeForm() {
    const [error, setError] = React.useState('')
@@ -10,50 +11,71 @@ function HomeForm() {
       e.preventDefault()
       const form = e.currentTarget
       const input = form.querySelector('input')
-      const username = input?.value
-      if (!username) {
+      const uri = input?.value
+      if (!uri) {
          setError('Username is required')
       }
-      if (username) {
-         const result = await grabUsername(username)
-         if (result.uri) {
-            const uri = result.uri
-            await signIn('google', {
-               callbackUrl: `/account/${uri}`,
-            })
-         } else {
+      if (uri) {
+         const result = await uriExist(uri)
+         if (result?.uri === uri) {
             setError('Username is taken')
+         } else {
+            try {
+               const username = await grabUsername(uri)
+               if (username) {
+                  window.location.href = `/account/${username}`
+               }
+            } catch (error) {
+               console.log(error)
+            }
+            await signIn('google', {
+               callbackUrl: `/login`,
+            })
          }
       }
    }
 
    return (
-      <>
+      <section className="flex flex-col justify-center h-screen sm:p-20 p-6 gap-6">
+         <h1 className="sm:text-6xl text-5xl font-bold">
+            Your one link for everything
+         </h1>
+         <h2 className="text-xl">
+            Ready to simplify your online presence? Enter your username to get
+            started.
+         </h2>
          <form
             onSubmit={handleSubmit}
-            className="flex items-center  shadow-gray-500/20 text-black sm:flex-row flex-col mt-10"
+            className="flex items-center  shadow-gray-500/20 text-black sm:flex-row flex-col rounded-lg sm:rounded-none sm:gap-0 gap-4"
          >
-            <div className="flex border-r border-gray-300">
-               <span className="bg-white py-4 pl-4">linktree.io/</span>
+            <div className="flex border-r border-gray-300 rounded-lg sm:rounded-none">
+               <span className="bg-white py-4 pl-4 rounded-l-lg sm:rounded-none">
+                  linktree.io/
+               </span>
                <input
                   type="text"
-                  className="py-4 outline-none"
+                  className="py-4 outline-none rounded-r-lg sm:rounded-none"
                   placeholder="username"
                />
             </div>
+            {error && (
+               <p className=" sm:hidden block text-red-500 text-sm font-semibold  animate-bounce duration-500">
+                  {error}
+               </p>
+            )}
             <button
                type="submit"
-               className="bg-blue-500  py-4 px-6 text-white rounded-lg sm:rounded-none mt-5 sm:mt-0"
+               className="bg-blue-500  py-4 px-6 text-white rounded-lg sm:rounded-none"
             >
                Join Free
             </button>
          </form>
          {error && (
-            <p className=" text-red-500 text-sm font-semibold mt-2 animate-bounce duration-500">
+            <p className=" sm:block hidden text-red-500 text-sm font-semibold mt-2 animate-bounce duration-500">
                {error}
             </p>
          )}
-      </>
+      </section>
    )
 }
 

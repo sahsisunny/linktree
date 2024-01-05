@@ -27,7 +27,7 @@ async function Links() {
                <EditLinks key={index} url={url.url} title={url.title} />
             ))}
          </div>
-         <MobilePreview />
+         <MobilePreview uri={uri} />
       </section>
    )
 }

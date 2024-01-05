@@ -6,7 +6,6 @@ import { FaLink } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { IoShapesOutline } from 'react-icons/io5'
 import { LuListTree } from 'react-icons/lu'
-import { SiGoogleanalytics } from 'react-icons/si'
 
 import authOptions from '@/utils/authOptions'
 
@@ -15,7 +14,7 @@ import LogOutButton from '../buttons/LogOutButton'
 async function Header() {
    const session = await getServerSession(authOptions)
    return (
-      <header className="w-full sticky top-10 z-50 shadow-md xl:px-20 px-6">
+      <header className="w-full sticky top-10 z-50 xl:px-20 px-6">
          <div className="w-full mx-auto flex justify-between px-4 bg-white py-2 rounded-[35px]  ">
             <div className="flex gap-6 ">
                <Link
@@ -48,13 +47,6 @@ async function Header() {
                            className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
                         >
                            <IoMdSettings className="text-xl" />
-                           Analytics
-                        </Link>
-                        <Link
-                           href="/projects"
-                           className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
-                        >
-                           <SiGoogleanalytics className="text-xl" />
                            Settings
                         </Link>
                      </>
