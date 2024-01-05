@@ -18,3 +18,7 @@ export async function getUriByEmail(email: string) {
    const page = await getPageByEmail(email)
    return page?.uri
 }
+
+export async function getUriByUri(uri: string) {
+   return await PageModel.findOne({ uri: uri })
+}

@@ -1,13 +1,16 @@
 import LinkItem from '@/components/publicPage/LinkItem'
 import ProfileSection from '@/components/publicPage/ProfileSection'
 import getAllUrls from '@/actions/getAllUrls '
+import uriExist from '@/actions/uriExist'
 import React from 'react'
 import { Url } from '@/types/url'
+import NoUserFound from '@/components/publicPage/NoUserFound'
 
-async function PublicPage() {
-   const uri = 'sunny'
-   if (!uri) {
-      return <div>404</div>
+async function PublicPage({ params }: { params: { uri: string } }) {
+   const uri = params.uri
+   const uriExists = await uriExist(uri)
+   if (!uriExists) {
+      return <NoUserFound uri={uri} />
    }
    const urls = await getAllUrls(uri)
 
