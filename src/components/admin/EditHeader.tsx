@@ -13,7 +13,7 @@ interface Props {
    email: string
 }
 
-const AddHeader: React.FC<Props> = ({ setClose, email }) => {
+const EditHeader: React.FC<Props> = ({ setClose, email }) => {
    const [image, setImage] = useState<File | null>(null)
    const [fullName, setFullName] = useState('')
    const [bio, setBio] = useState('')
@@ -104,4 +104,4 @@ const AddHeader: React.FC<Props> = ({ setClose, email }) => {
    )
 }
 
-export default AddHeader
+export default EditHeader

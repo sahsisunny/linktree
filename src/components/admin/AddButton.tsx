@@ -6,7 +6,7 @@ import { FiArchive } from 'react-icons/fi'
 
 import AddUrl from '@/components/admin/AddUrl'
 
-import AddHeader from './AddHeader'
+import EditHeader from './EditHeader'
 
 interface Props {
    email: string
@@ -27,13 +27,16 @@ const AddButton: React.FC<Props> = ({ email }) => {
    return (
       <>
          {showAddHeader ? (
-            <AddHeader setClose={() => setShowAddHeader(false)} email={email} />
+            <EditHeader
+               setClose={() => setShowAddHeader(false)}
+               email={email}
+            />
          ) : (
             <>
                {showAddUrl ? (
                   <div className="flex justify-center flex-col">
                      <button
-                        className="flex justify-center items-center text-lg gap-2 rounded-[30px] py-3 bg-gray-200 text-black w-full hover:bg-gray-100"
+                        className="flex justify-center gap-2 rounded-[30px] text-white py-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100"
                         onClick={handleToggleAddUrl}
                      >
                         <FaPlus className="text-xl" />
@@ -45,7 +48,7 @@ const AddButton: React.FC<Props> = ({ email }) => {
                            onClick={handleToggleAddHeader}
                         >
                            <BsCardHeading className="text-xl" />
-                           Add Header
+                           Edit Header
                         </button>
                         <button className="flex justify-center gap-2 rounded-[30px] text-white p-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100">
                            <FiArchive className="text-xl" />

@@ -3,7 +3,6 @@ import Image from 'next/image'
 import React from 'react'
 import { RiDraggable } from 'react-icons/ri'
 
-import CheckBoxInput from '@/components/admin/CheckBoxInput'
 import { EditInput } from '@/components/admin/EditInput'
 import EditTools from '@/components/admin/EditTools'
 import { extractBaseUrl } from '@/utils/getDomainFromUrl'
@@ -43,7 +42,7 @@ function EditLinks({ url, title, isArchived, isPinned }: EditLinksProps) {
             <div className="flex  gap-2 w-full">
                <div className="flex justify-center items-center p-2 w-[50px]">
                   <Image
-                     src={`https://www.google.com/s2/favicons?sz=126&domain_url=${extractBaseUrl(
+                     src={`https://www.google.com/s2/favicons?sz=256&domain_url=${extractBaseUrl(
                         url,
                      )}`}
                      alt=""
@@ -58,10 +57,6 @@ function EditLinks({ url, title, isArchived, isPinned }: EditLinksProps) {
                   <EditTools />
                </div>
             </div>
-         </div>
-
-         <div className="flex justify-center items-center sm:p-4 p-2 w-1/10 ">
-            <CheckBoxInput />
          </div>
       </div>
    )
