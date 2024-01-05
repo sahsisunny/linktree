@@ -5,6 +5,8 @@ import { IoCloseSharp } from 'react-icons/io5'
 import { LuImage } from 'react-icons/lu'
 
 import getUri from '@/actions/getUri'
+import { updateUserProfile } from '@/actions/updateUrls'
+import { imageUpload } from '@/actions/uploadImage'
 
 interface Props {
    setClose: () => void
@@ -24,13 +26,15 @@ const AddHeader: React.FC<Props> = ({ setClose, email }) => {
    }
 
    const onSubmit = async () => {
+      const imageUrl = await imageUpload(image as File)
       const uri = await getUri(email)
-      console.log({
-         uri: uri,
-         image: image,
-         fullName: fullName,
-         bio: bio,
-      })
+      if (uri) {
+         const url = await updateUserProfile(uri, bio, fullName, imageUrl)
+         if (url) {
+            console.log(url)
+            setClose()
+         }
+      }
    }
 
    return (
@@ -86,6 +90,7 @@ const AddHeader: React.FC<Props> = ({ setClose, email }) => {
                placeholder="Enter something about yourself"
                value={bio}
                onChange={(e) => setBio(e.target.value)}
+               maxLength={100}
             />
 
             <button

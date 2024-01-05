@@ -93,12 +93,6 @@ async function Header() {
                   >
                      Sign in
                   </Link>
-                  <Link
-                     href="/login"
-                     className=" py-3 px-5 hover:bg-gray-700 rounded-[10px] bg-black text-white"
-                  >
-                     Sign up
-                  </Link>
                </nav>
             )}
          </div>

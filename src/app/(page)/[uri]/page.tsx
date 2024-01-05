@@ -1,6 +1,7 @@
 import React from 'react'
 
 import getAllUrls from '@/actions/getAllUrls '
+import { getProfileDetails } from '@/actions/updateUrls'
 import uriExist from '@/actions/uriExist'
 import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'
@@ -14,13 +15,15 @@ async function PublicPage({ params }: { params: { uri: string } }) {
       return <NoUserFound uri={uri} />
    }
    const urls = await getAllUrls(uri)
+   const profileData = await getProfileDetails(uri)
 
    return (
       <section className="flex flex-col gap-4 justify-center items-center sm:p-20 p-4 w-full">
          <ProfileSection
-            username="sahsisunny"
-            bio="I'm a Software Engineer"
-            image="https://avatars.githubusercontent.com/u/70854507?v=4"
+            uri={profileData.uri}
+            name={profileData.name}
+            bio={profileData.bio}
+            image={profileData.image}
          />
 
          {urls.map((url: Url) => (

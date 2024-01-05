@@ -6,6 +6,7 @@ const pageSchema = new Schema(
       email: { type: String, required: true, min: 1, unique: true },
       image: { type: String, required: true, min: 1 },
       name: { type: String, required: true, min: 1 },
+      bio: { type: String },
    },
    { timestamps: true },
 )
@@ -22,5 +23,22 @@ export async function getUriByEmail(email: string) {
 }
 
 export async function getUriByUri(uri: string) {
+   return await PageModel.findOne({ uri: uri })
+}
+
+export async function updateProfile(
+   uri: string,
+   bio: string,
+   name: string,
+   image: string,
+) {
+   return await PageModel.updateOne(
+      { uri: uri },
+      { bio: bio, name: name, image: image },
+   )
+}
+
+// get page by uri
+export async function getPageByUri(uri: string) {
    return await PageModel.findOne({ uri: uri })
 }
