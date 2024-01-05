@@ -10,7 +10,6 @@ export default async function getAllUrls(uri: string) {
    mongoose.connect(MONGO_URL)
    try {
       const page = await UrlModel.find({ uri: uri })
-      console.log(JSON.parse(JSON.stringify(page)))
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)

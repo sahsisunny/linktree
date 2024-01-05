@@ -48,7 +48,7 @@ function HomeForm() {
             </button>
          </form>
          {error && (
-            <p className=" text-red-500 text-sm font-semibold mt-2 border">
+            <p className=" text-red-500 text-sm font-semibold mt-2 animate-bounce duration-500">
                {error}
             </p>
          )}

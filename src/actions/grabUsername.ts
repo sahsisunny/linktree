@@ -19,15 +19,11 @@ export default async function grabUsername(username: string) {
    try {
       const page = await getPageByEmail(email)
       if (page) {
-         console.log(`Page already exists for ${username} with email ${email}`)
          return JSON.parse(JSON.stringify(page))
       }
-      console.log(`Creating page for ${username} with email ${email}`)
       const pageDoc = await PageModel.create({ uri: username, email: email })
-      console.log(pageDoc)
       return JSON.parse(JSON.stringify(pageDoc))
    } catch (error) {
-      console.log(error)
       return { error: 'Something went wrong' }
    }
 }
