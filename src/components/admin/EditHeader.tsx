@@ -17,7 +17,6 @@ const EditHeader: React.FC<Props> = ({ setClose, email }) => {
    const [image, setImage] = useState<File | null>(null)
    const [fullName, setFullName] = useState('')
    const [bio, setBio] = useState('')
-   const [error, setError] = useState('Add all fields')
 
    const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const files = e.target.files
@@ -29,10 +28,6 @@ const EditHeader: React.FC<Props> = ({ setClose, email }) => {
    const onSubmit = async () => {
       const imageUrl = await imageUpload(image as File)
       const uri = await getUri(email)
-      if (!uri || !fullName || !bio || !imageUrl) {
-         setError('Add all fields')
-         return
-      }
       if (uri) {
          const url = await updateUserProfile(uri, bio, fullName, imageUrl)
          if (url) {
@@ -97,8 +92,6 @@ const EditHeader: React.FC<Props> = ({ setClose, email }) => {
                onChange={(e) => setBio(e.target.value)}
                maxLength={100}
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-
             <button
                className="bg-transparent px-6 py-2 rounded-full border-y-2 hover:bg-blue-500 hover:text-white"
                onClick={onSubmit}

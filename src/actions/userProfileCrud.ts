@@ -4,11 +4,12 @@ import { getPageByUri, updateProfile } from '@/models/page'
 
 export async function updateUserProfile(
    uri: string,
-   bio: string,
-   name: string,
-   image: string,
+   bio?: string,
+   name?: string,
+   image?: string,
 ) {
    mongoConnect()
+
    try {
       const page = await updateProfile(uri, bio, name, image)
       return JSON.parse(JSON.stringify(page))

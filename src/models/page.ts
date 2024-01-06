@@ -28,14 +28,26 @@ export async function getUriByUri(uri: string) {
 
 export async function updateProfile(
    uri: string,
-   bio: string,
-   name: string,
-   image: string,
+   bio?: string,
+   name?: string,
+   image?: string,
 ) {
-   return await PageModel.updateOne(
-      { uri: uri },
-      { bio: bio, name: name, image: image },
-   )
+   const updateFields: { [key: string]: string } = {}
+
+   if (bio !== undefined && bio !== '') {
+      updateFields.bio = bio
+   }
+
+   if (name !== undefined && name !== '') {
+      updateFields.name = name
+   }
+
+   if (image !== undefined && image !== '') {
+      updateFields.image = image
+   }
+   console.log(updateFields)
+
+   return await PageModel.updateOne({ uri: uri }, { $set: updateFields })
 }
 
 // get page by uri
