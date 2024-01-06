@@ -11,9 +11,10 @@ import { extractBaseUrl } from '@/utils/urlUtils'
 interface EditLinksProps {
    url: string
    title: string
+   isArchive: boolean
 }
 
-function EditLinks({ url, title }: EditLinksProps) {
+function EditLinks({ url, title, isArchive }: EditLinksProps) {
    const [isModalOpen, setIsModalOpen] = useState(false)
    const [isLocked, setIsLocked] = useState(false)
 
@@ -87,6 +88,7 @@ function EditLinks({ url, title }: EditLinksProps) {
                isOpen={isModalOpen}
                onClose={() => setIsModalOpen(false)}
                url={url}
+               isArchive={isArchive}
             ></DeleteDialog>
          )}
       </div>

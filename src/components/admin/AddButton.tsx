@@ -34,27 +34,21 @@ const AddButton: React.FC<Props> = ({ email }) => {
          ) : (
             <>
                {showAddUrl ? (
-                  <div className="flex justify-center flex-col">
+                  <div className="flex sm:flex-row flex-col justify-between gap-4 mt-4">
                      <button
-                        className="flex justify-center gap-2 rounded-[30px] text-white py-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100"
+                        className="flex justify-center gap-2 rounded-[30px] text-white  border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100 sm:w-[70%] w-full py-3"
                         onClick={handleToggleAddUrl}
                      >
                         <FaPlus className="text-xl" />
                         Add new
                      </button>
-                     <div className="flex justify-between gap-4 mt-4">
-                        <button
-                           className="flex justify-center gap-2 rounded-[30px] text-white p-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100"
-                           onClick={handleToggleAddHeader}
-                        >
-                           <BsCardHeading className="text-xl" />
-                           Edit Header
-                        </button>
-                        <button className="flex justify-center gap-2 rounded-[30px] text-white p-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100">
-                           <FiArchive className="text-xl" />
-                           View Archive
-                        </button>
-                     </div>
+                     <button
+                        className="flex justify-center gap-2 rounded-[30px] text-white py-3 border-2 hover:shadow-lg border-gray-200 hover:text-black hover:bg-gray-100 sm:w-[30%] w-full"
+                        onClick={handleToggleAddHeader}
+                     >
+                        <BsCardHeading className="text-xl" />
+                        Edit Header
+                     </button>
                   </div>
                ) : (
                   <AddUrl setClose={handleToggleAddUrl} email={email} />

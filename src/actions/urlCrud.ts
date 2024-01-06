@@ -74,3 +74,18 @@ export async function getUserAllUrls(uri: string) {
       return
    }
 }
+
+export async function getUserArchivedUrls(uri: string) {
+   mongoConnect()
+
+   try {
+      const page = await UrlModel.find({ uri: uri, isArchived: true })
+         .sort({ order: 1 })
+         .exec()
+
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}

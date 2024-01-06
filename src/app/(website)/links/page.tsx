@@ -8,13 +8,14 @@ import EditLinks from '@/components/admin/EditLinks'
 import MobilePreview from '@/components/admin/MobilePreview'
 import { Url } from '@/types/url'
 import authOptions from '@/utils/authOptions'
-import { getUserAllUrls } from '@/actions/urlCrud'
+import { getUserAllUrls, getUserArchivedUrls } from '@/actions/urlCrud'
 
 async function Links() {
    const sesion = await getServerSession(authOptions)
    const email = sesion?.user?.email || ''
    const uri = await getUri(email)
    const urls = await getUserAllUrls(uri)
+   const archivedUrls = await getUserArchivedUrls(uri)
 
    if (!sesion) {
       redirect('/login')
@@ -24,7 +25,27 @@ async function Links() {
          <div className="flex flex-col gap-4 md:w-[70%] w-full">
             <AddButton email={email} />
             {urls.map((url: Url, index: number) => (
-               <EditLinks key={index} url={url.url} title={url.title} />
+               <EditLinks
+                  key={index}
+                  url={url.url}
+                  title={url.title}
+                  isArchive={url.isArchived}
+               />
+            ))}
+            <h1
+               className={`${
+                  archivedUrls.length > 0 ? 'block' : 'hidden'
+               } text-2xl font-bold text-center w-full mt-8`}
+            >
+               Archived Links
+            </h1>
+            {archivedUrls.map((url: Url, index: number) => (
+               <EditLinks
+                  key={index}
+                  url={url.url}
+                  title={url.title}
+                  isArchive={url.isArchived}
+               />
             ))}
          </div>
          <MobilePreview uri={uri} />
