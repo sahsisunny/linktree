@@ -41,14 +41,14 @@ async function Header() {
                            Links
                         </Link>
                         <Link
-                           href="/contact"
+                           href="/appearance"
                            className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
                         >
                            <IoShapesOutline className="text-xl" />
                            Appearance
                         </Link>
                         <Link
-                           href="/projects"
+                           href="/settings"
                            className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
                         >
                            <IoMdSettings className="text-xl" />

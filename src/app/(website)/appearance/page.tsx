@@ -4,7 +4,7 @@ import React from 'react'
 
 import authOptions from '@/utils/authOptions'
 
-async function AccountPage() {
+async function AppearancePage() {
    const sesion = await getServerSession(authOptions)
    const username = sesion?.user?.name
 
@@ -12,14 +12,11 @@ async function AccountPage() {
       redirect('/login')
    }
    return (
-      <section className="flex flex-col justify-center h-screen  p-20">
-         <h1 className="text-3xl font-bold">Account</h1>
-         <p className="text-xl">Username: {username}</p>
-      </section>
+      <section className="flex flex-col justify-center h-screen  p-20"></section>
    )
 }
 
-export default AccountPage
+export default AppearancePage
 
 export function generateMetadata() {
    return {

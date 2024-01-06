@@ -6,8 +6,8 @@ import { RiDraggable } from 'react-icons/ri'
 import { GoListOrdered } from 'react-icons/go'
 
 import { EditInput } from '@/components/admin/EditInput'
-import DeleteDialog from '@/dialog/DeleteDialog'
-import UpdateOrder from '@/dialog/UpdateOrder'
+import DeleteDialog from '@/components/dialog/DeleteDialog'
+import UpdateOrder from '@/components/dialog/UpdateOrder'
 import { extractBaseUrl } from '@/utils/urlUtils'
 
 interface EditLinksProps {
