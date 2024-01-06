@@ -49,6 +49,6 @@ export const updateDeleted = async (url: string, newDeleted: boolean) => {
    return await UrlModel.updateOne({ url: url }, { isDeleted: newDeleted })
 }
 
-export const updateArchived = async (url: string, newArchived: boolean) => {
+export const archiveUrl = async (url: string, newArchived: boolean) => {
    return await UrlModel.updateOne({ url: url }, { isArchived: newArchived })
 }

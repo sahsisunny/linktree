@@ -6,7 +6,10 @@ export default async function getAllUrls(uri: string) {
    mongoConnect()
 
    try {
-      const page = await UrlModel.find({ uri: uri }).sort({ createdAt: -1 })
+      const page = await UrlModel.find({ uri: uri, isArchived: false })
+         .sort({ order: 1 })
+         .exec()
+
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)

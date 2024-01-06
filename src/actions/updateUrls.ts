@@ -1,7 +1,7 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
+import { getPageByUri, updateProfile } from '@/models/page'
 import { updateTitle } from '@/models/url'
-import { updateProfile, getPageByUri } from '@/models/page'
 
 export async function updateUrlTitle(url: string, title: string) {
    mongoConnect()

@@ -1,4 +1,4 @@
-import { FaEnvelope, FaUser, FaImage, FaLink } from 'react-icons/fa'
+import { FaEnvelope, FaImage, FaLink, FaUser } from 'react-icons/fa'
 
 export default function Privacy() {
    return (
