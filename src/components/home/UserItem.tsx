@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import DummyProfile from './../../../public/user.webp'
 
 type Props = {
    name: string
@@ -25,7 +26,7 @@ const UserItem = ({ name, uri, image }: Props) => {
 
          <div className="group-hover:scale-125 duration-200 absolute bottom-2 right-2 w-[110px] z-5 rounded-full">
             <Image
-               src={image}
+               src={image ? image : DummyProfile}
                alt={name}
                width={200}
                height={200}

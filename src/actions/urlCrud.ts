@@ -56,6 +56,17 @@ export async function deleteUserUrl(url: string) {
    }
 }
 
+export async function deleteUserAllUrls(uri: string) {
+   mongoConnect()
+   try {
+      const page = await UrlModel.deleteMany({ uri: uri })
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
 // UPDATE
 export async function archiveUserUrl(url: string, archived: boolean) {
    mongoConnect()

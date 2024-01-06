@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import DummyProfile from './../../../public/user.webp'
 
 interface ProfileSectionProps {
    uri: string
@@ -11,7 +12,7 @@ const ProfileSection = ({ uri, name, bio, image }: ProfileSectionProps) => {
    return (
       <div className="flex flex-col justify-center items-center text-center w-full">
          <Image
-            src={image}
+            src={image ? image : DummyProfile}
             alt={name}
             className="sm:w-35 w-25 sm:h-35 h-25 rounded-full"
             width={150}
