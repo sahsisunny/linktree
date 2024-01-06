@@ -6,7 +6,7 @@ import { RiDraggable } from 'react-icons/ri'
 
 import { EditInput } from '@/components/admin/EditInput'
 import DeleteDialog from '@/dialog/DeleteDialog'
-import { extractBaseUrl } from '@/utils/getDomainFromUrl'
+import { extractBaseUrl } from '@/utils/urlUtils'
 
 interface EditLinksProps {
    url: string

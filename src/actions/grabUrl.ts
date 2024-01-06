@@ -1,7 +1,7 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
 import { getUrlByUrl, UrlModel } from '@/models/url'
-import { getDomainFromUrl } from '@/utils/getDomainFromUrl'
+import { getDomainFromUrl } from '@/utils/urlUtils'
 
 export default async function grabUrl(uri: string, url: string) {
    mongoConnect()
