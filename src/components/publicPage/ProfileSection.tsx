@@ -13,9 +13,9 @@ const ProfileSection = ({ uri, name, bio, image }: ProfileSectionProps) => {
          <Image
             src={image}
             alt={name}
-            className="sm:w-40 w-30 sm:h-40 h-30 rounded-full"
-            width={200}
-            height={200}
+            className="sm:w-35 w-25 sm:h-35 h-25 rounded-full"
+            width={150}
+            height={150}
          />
          <span className="sm:text-xl text-md font-semibold text-gray-400 mt-2">
             @{uri}

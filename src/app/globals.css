@@ -56,3 +56,8 @@ body,
       scrollbar-width: none; /* Firefox */
    }
 }
+
+.phone {
+   box-sizing: border-box;
+   box-shadow: 5px 2px 20px #000;
+}
