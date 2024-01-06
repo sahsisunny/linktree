@@ -23,7 +23,7 @@ function HomeForm() {
             try {
                const username = await grabUsername(uri)
                if (username) {
-                  window.location.href = `/account/${username}`
+                  window.location.href = `/${username}`
                }
             } catch (error) {
                console.log(error)

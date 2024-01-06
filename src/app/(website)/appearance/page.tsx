@@ -20,7 +20,7 @@ export default AppearancePage
 
 export function generateMetadata() {
    return {
-      title: `Account - LinkHub`,
-      description: `Account page for LinkHub.`,
+      title: `Appearance - LinkHub`,
+      description: `Change your appearance`,
    }
 }
