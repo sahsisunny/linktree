@@ -72,7 +72,7 @@ export default function Privacy() {
             <p>
                If you have any questions or concerns about our Privacy Policy,
                please feel free to reach out to us at:
-               <span className="italic">your-email@example.com</span>
+               <span className="italic">sahsisunny@gmail.com</span>
             </p>
 
             <p className="mt-8">

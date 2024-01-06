@@ -49,7 +49,7 @@ export default function TermsOfService() {
             <p>
                If you have any questions or concerns about our Terms of Service,
                please feel free to reach out to us at:
-               <span className="italic">your-email@example.com</span>
+               <span className="italic">sahsisunny@gmail.com</span>
             </p>
 
             <p className="mt-8">
