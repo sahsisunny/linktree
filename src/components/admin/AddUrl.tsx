@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 
 import getUri from '@/actions/getUri'
-import grabUrl from '@/actions/grabUrl'
 import { isValidUrl } from '@/utils/urlUtils'
+import { addUserUrl } from '@/actions/urlCrud'
 
 interface Props {
    setClose: () => void
@@ -16,9 +16,9 @@ const AddUrl: React.FC<Props> = ({ setClose, email }) => {
    const [error, setError] = useState('Enter the URL')
    const onSubmit = async () => {
       const uri = await getUri(email)
-      const res = await grabUrl(uri, url)
+      const res = await addUserUrl(uri, url)
       if (res?.error) {
-         console.log(res.error)
+         setError(res.error)
       } else {
          setClose()
          window.location.reload()

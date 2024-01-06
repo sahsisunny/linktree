@@ -2,19 +2,19 @@ import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
-import getAllUrls from '@/actions/getAllUrls '
 import getUri from '@/actions/getUri'
 import AddButton from '@/components/admin/AddButton'
 import EditLinks from '@/components/admin/EditLinks'
 import MobilePreview from '@/components/admin/MobilePreview'
 import { Url } from '@/types/url'
 import authOptions from '@/utils/authOptions'
+import { getUserAllUrls } from '@/actions/urlCrud'
 
 async function Links() {
    const sesion = await getServerSession(authOptions)
    const email = sesion?.user?.email || ''
    const uri = await getUri(email)
-   const urls = await getAllUrls(uri)
+   const urls = await getUserAllUrls(uri)
 
    if (!sesion) {
       redirect('/login')

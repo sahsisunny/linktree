@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdClose, MdDeleteOutline, MdOutlineArchive } from 'react-icons/md'
 
-import { archiveUserUrl, deleteUserUrl } from '@/actions/delete'
+import { archiveUserUrl, deleteUserUrl } from '@/actions/urlCrud'
 
 interface DeleteDialogProps {
    isOpen: boolean

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import getAllUrls from '@/actions/getAllUrls '
 import { getProfileDetails } from '@/actions/updateUrls'
 import uriExist from '@/actions/uriExist'
 import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'
 import ProfileSection from '@/components/publicPage/ProfileSection'
 import { Url } from '@/types/url'
+import { getUserAllUrls } from '@/actions/urlCrud'
 
 export default async function PublicPage({
    params,
@@ -18,7 +18,7 @@ export default async function PublicPage({
    if (!uriExists) {
       return <NoUserFound uri={uri} />
    }
-   const urls = await getAllUrls(uri)
+   const urls = await getUserAllUrls(uri)
    const profileData = await getProfileDetails(uri)
 
    return (
