@@ -49,7 +49,7 @@ export const EditInput: React.FC<EditInputProps> = ({ initialText }) => {
             />
          ) : (
             <>
-               <p className="font-semibold max-w-[100%] whitespace-nowrap overflow-hidden overflow-ellipsis">
+               <p className="font-semibold max-w-[85%] whitespace-nowrap overflow-hidden overflow-ellipsis">
                   {inputValue}
                </p>
                <button className="text-xl" onClick={handleEditClick}>

@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { MdDeleteOutline, MdLockOpen, MdLockOutline } from 'react-icons/md'
+import { MdDeleteOutline, MdOutlineUnarchive } from 'react-icons/md'
 import { RiDraggable } from 'react-icons/ri'
 
 import { EditInput } from '@/components/admin/EditInput'
@@ -16,8 +16,6 @@ interface EditLinksProps {
 
 function EditLinks({ url, title, isArchive }: EditLinksProps) {
    const [isModalOpen, setIsModalOpen] = useState(false)
-   const [isLocked, setIsLocked] = useState(false)
-
    const handleDelete = async () => {
       setIsModalOpen(!isModalOpen)
    }
@@ -59,23 +57,19 @@ function EditLinks({ url, title, isArchive }: EditLinksProps) {
                         height={50}
                      />
                   </div>
-                  <div className="flex flex-col gap-2 w-full">
+                  <div className="flex flex-col gap-2 w-[90%]">
                      <EditInput initialText={title} />
                      <EditInput initialText={url} />
                      <div className="flex gap-2 w-[full]">
-                        <MdDeleteOutline
-                           className="text-2xl cursor-pointer"
-                           onClick={handleDelete}
-                        />
-                        {isLocked ? (
-                           <MdLockOutline
+                        {isArchive ? (
+                           <MdOutlineUnarchive
                               className="text-2xl cursor-pointer"
-                              onClick={() => setIsLocked(false)}
+                              onClick={handleDelete}
                            />
                         ) : (
-                           <MdLockOpen
+                           <MdDeleteOutline
                               className="text-2xl cursor-pointer"
-                              onClick={() => setIsLocked(true)}
+                              onClick={handleDelete}
                            />
                         )}
                      </div>

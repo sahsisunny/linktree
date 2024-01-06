@@ -56,6 +56,7 @@ const AddUrl: React.FC<Props> = ({ setClose, email }) => {
                   value={url}
                   autoFocus
                   onChange={onChange}
+                  maxLength={100}
                />
 
                <button
