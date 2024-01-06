@@ -30,6 +30,8 @@ async function Links() {
                   url={url.url}
                   title={url.title}
                   isArchive={url.isArchived}
+                  totalUrls={urls.length}
+                  order={url.order}
                />
             ))}
             <h1
@@ -45,6 +47,8 @@ async function Links() {
                   url={url.url}
                   title={url.title}
                   isArchive={url.isArchived}
+                  totalUrls={urls.length}
+                  order={url.order}
                />
             ))}
          </div>

@@ -7,8 +7,43 @@ import {
    UrlModel,
    updateTitle,
    updateUrl,
+   updateOrder,
 } from '@/models/url'
 import { getDomainFromUrl } from '@/utils/urlUtils'
+
+// GET
+
+export async function getUserAllUrls(uri: string) {
+   mongoConnect()
+
+   try {
+      const page = await UrlModel.find({ uri: uri, isArchived: false }).sort({
+         order: 1,
+      })
+
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function getUserArchivedUrls(uri: string) {
+   mongoConnect()
+
+   try {
+      const page = await UrlModel.find({ uri: uri, isArchived: true })
+         .sort({ order: 1 })
+         .exec()
+
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+// DELETE
 
 export async function deleteUserUrl(url: string) {
    mongoConnect()
@@ -21,6 +56,7 @@ export async function deleteUserUrl(url: string) {
    }
 }
 
+// UPDATE
 export async function archiveUserUrl(url: string, archived: boolean) {
    mongoConnect()
    try {
@@ -67,36 +103,6 @@ export async function addUserUrl(uri: string, url: string) {
    }
 }
 
-export async function getUserAllUrls(uri: string) {
-   mongoConnect()
-
-   try {
-      const page = await UrlModel.find({ uri: uri, isArchived: false })
-         .sort({ order: 1 })
-         .exec()
-
-      return JSON.parse(JSON.stringify(page))
-   } catch (error) {
-      console.log(error)
-      return
-   }
-}
-
-export async function getUserArchivedUrls(uri: string) {
-   mongoConnect()
-
-   try {
-      const page = await UrlModel.find({ uri: uri, isArchived: true })
-         .sort({ order: 1 })
-         .exec()
-
-      return JSON.parse(JSON.stringify(page))
-   } catch (error) {
-      console.log(error)
-      return
-   }
-}
-
 export async function updateUserUrlTitle(url: string, title: string) {
    mongoConnect()
    try {
@@ -108,11 +114,21 @@ export async function updateUserUrlTitle(url: string, title: string) {
    }
 }
 
-// update url
 export async function updateUserUrl(url: string, newUrl: string) {
    mongoConnect()
    try {
       const page = await updateUrl(url, newUrl)
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function updateUserUrlOrder(url: string, order: number) {
+   mongoConnect()
+   try {
+      const page = await updateOrder(url, order)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)

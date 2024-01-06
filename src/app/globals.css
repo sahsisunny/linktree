@@ -15,10 +15,10 @@ body,
 }
 
 .bgr {
-   background: rgba(184, 183, 183, 0.178);
-   box-shadow: 0 4px 30px #0000001a;
-   backdrop-filter: blur(5px);
-   -webkit-backdrop-filter: blur(5px);
+   background: #021b79;
+   background: -webkit-linear-gradient(to right, #0575e6, #021b79);
+   background: linear-gradient(to right, #0575e6, #021b79);
+   color: white;
 }
 
 .hoverAnimate :hover {

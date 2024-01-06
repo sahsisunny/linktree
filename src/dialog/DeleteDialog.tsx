@@ -33,13 +33,13 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
    }
 
    return (
-      <div className="flex flex-col">
-         <div className="px-4 flex justify-center items-center relative w-full bgr">
-            <h1 className="text-2xl font-bold w-full text-center">
+      <div className="flex flex-col bgr rounded-[30px]">
+         <div className="px-4 flex justify-center items-center relative w-full">
+            <p className="text-lg font-bold w-full text-center">
                Are you sure?
-            </h1>
+            </p>
             <button
-               className="hover:bg-white hover:text-black rounded-full p-2"
+               className="bg-transparent text-gray-200 p-2 text-2xl rounded-full"
                onClick={onClose}
             >
                <MdClose className="text-2xl" />
@@ -48,7 +48,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
          <div className="flex flex-col gap-2 p-4 w-full">
             <div className="flex justify-center gap-6 w-full">
                <button
-                  className="border-2 hover:bg-gray-200 hover:text-black rounded-full py-2 flex items-center justify-center gap-2 w-full"
+                  className="border-2 transition duration-500 ease-in-out hover:bg-gray-200 hover:text-black rounded-full py-2 flex items-center justify-center gap-2 w-full"
                   onClick={handleDelete}
                >
                   <MdDeleteOutline className="text-2xl" />
@@ -56,7 +56,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
                </button>
 
                <button
-                  className="border-2 hover:bg-gray-200 hover:text-black rounded-full py-2 flex items-center justify-center gap-2 w-full"
+                  className="border-2 transition duration-500 ease-in-out hover:bg-gray-200 hover:text-black rounded-full py-2 flex items-center justify-center gap-2 w-full"
                   onClick={handleArchive}
                >
                   {isArchive ? (

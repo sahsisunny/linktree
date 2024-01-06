@@ -3,21 +3,37 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { MdDeleteOutline, MdOutlineUnarchive } from 'react-icons/md'
 import { RiDraggable } from 'react-icons/ri'
+import { GoListOrdered } from 'react-icons/go'
 
 import { EditInput } from '@/components/admin/EditInput'
 import DeleteDialog from '@/dialog/DeleteDialog'
+import UpdateOrder from '@/dialog/UpdateOrder'
 import { extractBaseUrl } from '@/utils/urlUtils'
 
 interface EditLinksProps {
    url: string
    title: string
    isArchive: boolean
+   totalUrls: number
+   order: number
 }
 
-function EditLinks({ url, title, isArchive }: EditLinksProps) {
+function EditLinks({
+   url,
+   title,
+   isArchive,
+   totalUrls,
+   order,
+}: EditLinksProps) {
    const [isModalOpen, setIsModalOpen] = useState(false)
+   const [isUpdateOrderOpen, setIsUpdateOrderOpen] = useState(false)
    const handleDelete = async () => {
       setIsModalOpen(!isModalOpen)
+      setIsUpdateOrderOpen(false)
+   }
+   const handleOrder = async () => {
+      setIsUpdateOrderOpen(!isUpdateOrderOpen)
+      setIsModalOpen(false)
    }
 
    const dragItem = React.useRef<HTMLDivElement>(null)
@@ -72,6 +88,10 @@ function EditLinks({ url, title, isArchive }: EditLinksProps) {
                               onClick={handleDelete}
                            />
                         )}
+                        <GoListOrdered
+                           className="text-2xl cursor-pointer"
+                           onClick={handleOrder}
+                        />
                      </div>
                   </div>
                </div>
@@ -84,6 +104,15 @@ function EditLinks({ url, title, isArchive }: EditLinksProps) {
                url={url}
                isArchive={isArchive}
             ></DeleteDialog>
+         )}
+         {isUpdateOrderOpen && (
+            <UpdateOrder
+               isOpen={isUpdateOrderOpen}
+               onClose={() => setIsUpdateOrderOpen(false)}
+               url={url}
+               totalUrls={totalUrls}
+               order={order}
+            ></UpdateOrder>
          )}
       </div>
    )
