@@ -9,19 +9,19 @@ export default function TermsOfService() {
             </h1>
 
             <p>
-               Welcome to Litree! By using Litree and its services, you agree to
-               comply with and be bound by the following terms and conditions.
-               Please review them carefully. If you do not agree to these terms,
-               please do not use Litree.
+               Welcome to LinkHub! By using LinkHub and its services, you agree
+               to comply with and be bound by the following terms and
+               conditions. Please review them carefully. If you do not agree to
+               these terms, please do not use LinkHub.
             </p>
 
             {/* Add more sections based on your terms and conditions */}
 
             <h2 className="text-xl font-bold mt-6">User Conduct</h2>
             <p>
-               When using Litree, you agree to:
+               When using LinkHub, you agree to:
                <ul className="">
-                  <li>Use Litree only for lawful purposes</li>
+                  <li>Use LinkHub only for lawful purposes</li>
                   <li>Respect the rights and privacy of others</li>
                   {/* Add any other user conduct guidelines */}
                </ul>
@@ -29,8 +29,8 @@ export default function TermsOfService() {
 
             <h2 className="text-xl font-bold mt-6">Intellectual Property</h2>
             <p>
-               Litree and its content, features, and functionality are owned by
-               Litree and are protected by international copyright, trademark,
+               LinkHub and its content, features, and functionality are owned by
+               LinkHub and are protected by international copyright, trademark,
                patent, trade secret, and other intellectual property or
                proprietary rights laws.
             </p>
@@ -39,9 +39,9 @@ export default function TermsOfService() {
 
             <h2 className="text-xl font-bold mt-6">Disclaimer</h2>
             <p>
-               Litree is provided "as is" and "as available" without any
-               representations or warranties, expressed or implied. Litree makes
-               no representations or warranties in relation to the use or
+               LinkHub is provided "as is" and "as available" without any
+               representations or warranties, expressed or implied. LinkHub
+               makes no representations or warranties in relation to the use or
                completeness of the information on the platform.
             </p>
 
@@ -53,7 +53,7 @@ export default function TermsOfService() {
             </p>
 
             <p className="mt-8">
-               Thank you for using Litree responsibly. Your compliance with
+               Thank you for using LinkHub responsibly. Your compliance with
                these terms helps us provide a safe and enjoyable platform for
                everyone.
             </p>
@@ -64,7 +64,7 @@ export default function TermsOfService() {
 
 export function generateMetadata() {
    return {
-      title: `Terms of Service - Litree`,
-      description: `Explore the Terms of Service for Litree, a Linktree clone designed with care by Sunny Sahsi.`,
+      title: `Terms of Service - LinkHub`,
+      description: `Explore the Terms of Service for LinkHub, a LinkHub clone designed with care by Sunny Sahsi.`,
    }
 }

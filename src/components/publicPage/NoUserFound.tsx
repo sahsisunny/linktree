@@ -14,7 +14,7 @@ const NoUserFound: React.FC<Props> = ({ uri }) => {
             className="flex items-center gap-2 text-6xl font-semibold text-white"
          >
             <FaLink className="text-5xl " />
-            <span>LinkTree</span>
+            <span>LinkHub</span>
          </Link>
          <h1 className="text-4xl font-semibold text-center animate-pulse">
             Oops! No User Found
@@ -42,7 +42,7 @@ const NoUserFound: React.FC<Props> = ({ uri }) => {
             href="/login"
             className="text-white underline cursor-pointer font-semibold hover:text-gray-200"
          >
-            Create Your LinkTree Now
+            Create Your LinkHub Now
          </Link>
       </section>
    )

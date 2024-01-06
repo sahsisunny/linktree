@@ -19,7 +19,7 @@ function HomeOutput({ uri }: HomeOutputProps) {
          <div className="flex items-center  shadow-gray-500/20 text-black sm:flex-row flex-col mt-10">
             <div className="flex border-r border-gray-300">
                <span className="bg-white py-4 pl-4 rounded-l-lg sm:rounded-none">
-                  linktree.io/
+                  LinkHub.io/
                </span>
                <input
                   type="text"

@@ -9,7 +9,7 @@ export default function Privacy() {
             </h1>
 
             <p>
-               Welcome to Litree! We value your trust, and we want to be
+               Welcome to LinkHub! We value your trust, and we want to be
                transparent about how we collect, use, and protect your personal
                information. Please take a moment to review our privacy practices
                below.
@@ -19,7 +19,7 @@ export default function Privacy() {
 
             <h2 className="text-xl font-bold mt-6">Information We Collect</h2>
             <p>
-               At Litree, we collect the following types of information to
+               At LinkHub, we collect the following types of information to
                enhance your experience:
                <ul className="">
                   <li>
@@ -76,7 +76,7 @@ export default function Privacy() {
             </p>
 
             <p className="mt-8">
-               Thank you for trusting Litree. Your privacy is our priority, and
+               Thank you for trusting LinkHub. Your privacy is our priority, and
                we are committed to ensuring your online experience is secure and
                enjoyable.
             </p>
@@ -87,7 +87,7 @@ export default function Privacy() {
 
 export function generateMetadata() {
    return {
-      title: `Privacy - Litree`,
-      description: `Explore the Privacy Policy for Litree, a Linktree clone designed with care by Sunny Sahsi.`,
+      title: `Privacy - LinkHub`,
+      description: `Explore the Privacy Policy for LinkHub, a Linktree alternative.`,
    }
 }

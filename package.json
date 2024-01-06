@@ -1,5 +1,12 @@
 {
-   "name": "linktree",
+   "name": "LinkHub",
+   "author": "Sunny Sahsi",
+   "description": "A link sharing platform",
+   "license": "MIT",
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/sahsisunny/linkhub"
+   },
    "version": "0.1.0",
    "private": true,
    "scripts": {

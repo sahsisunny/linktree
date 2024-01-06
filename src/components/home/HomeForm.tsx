@@ -50,7 +50,7 @@ function HomeForm() {
          >
             <div className="flex border-r border-gray-300 rounded-lg sm:rounded-none">
                <span className="bg-white py-4 pl-4 rounded-l-lg sm:rounded-none">
-                  linktree.io/
+                  LinkHub.io/
                </span>
                <input
                   type="text"

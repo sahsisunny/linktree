@@ -14,7 +14,7 @@ export default async function Login() {
          <div className=" mx-auto flex flex-col gap-6 p-6 shadow">
             <h1 className="text-4xl font-bold text-center">Sign In</h1>
             <p className="text-center">
-               Sign in with Google to start using Linktree.
+               Sign in with Google to start using LinkHub.
             </p>
             <LoginWithGoogle />
          </div>
@@ -23,7 +23,7 @@ export default async function Login() {
 }
 export function generateMetadata() {
    return {
-      title: `Sign In - Linktree`,
-      description: `Sign in with Google to start using Linktree.`,
+      title: `Sign In - LinkHub`,
+      description: `Sign in with Google to start using LinkHub.`,
    }
 }

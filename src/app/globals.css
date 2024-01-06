@@ -21,14 +21,6 @@ body,
    -webkit-backdrop-filter: blur(5px);
 }
 
-.back {
-   background-image: url('./../../public/back.webp');
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   background-attachment: fixed;
-}
-
 .hoverAnimate :hover {
    animation: hoverAnimate 0.3s linear 1;
 }

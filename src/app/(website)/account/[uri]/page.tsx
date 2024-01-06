@@ -23,7 +23,7 @@ export default AccountPage
 
 export function generateMetadata() {
    return {
-      title: `Account - Linktree`,
-      description: `Account page for Linktree.`,
+      title: `Account - LinkHub`,
+      description: `Account page for LinkHub.`,
    }
 }

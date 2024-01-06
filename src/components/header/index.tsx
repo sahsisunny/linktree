@@ -2,11 +2,10 @@ import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaLink } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { IoShapesOutline } from 'react-icons/io5'
 import { LuListTree } from 'react-icons/lu'
-
+import LogoImage from '../../../public/LinkHub.webp'
 import authOptions from '@/utils/authOptions'
 
 import LogOutButton from '../buttons/LogOutButton'
@@ -19,11 +18,17 @@ async function Header() {
             <div className="flex gap-6 ">
                <Link
                   href="/"
-                  className="flex items-center gap-2 text-md font-semibold text-blue-500"
+                  className="flex items-center text-md font-semibold text-blue-500"
                >
-                  <FaLink className="text-2xl" />
+                  <Image
+                     src={LogoImage}
+                     width={40}
+                     height={40}
+                     alt="LinkHub Logo"
+                     className="rounded-full cursor-pointer"
+                  />
 
-                  <span>LinkTree</span>
+                  <span>LinkHub</span>
                </Link>
                <nav className="md:flex items-center text-black font-semibold   text-sm hidden ">
                   {session ? (
