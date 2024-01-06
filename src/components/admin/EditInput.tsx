@@ -1,12 +1,15 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import { MdOutlineModeEdit } from 'react-icons/md'
+import { updateUserUrlTitle, updateUserUrl } from '@/actions/urlCrud'
+import { isValidUrl } from '@/utils/urlUtils'
 
 interface EditInputProps {
    initialText: string
+   url: string
 }
 
-export const EditInput: React.FC<EditInputProps> = ({ initialText }) => {
+export const EditInput: React.FC<EditInputProps> = ({ initialText, url }) => {
    const [isEditing, setIsEditing] = useState(false)
    const [inputValue, setInputValue] = useState(initialText)
    const inputRef = useRef<HTMLInputElement>(null)
@@ -25,10 +28,18 @@ export const EditInput: React.FC<EditInputProps> = ({ initialText }) => {
       setInputValue(text)
    }
 
-   const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+   const handleEnterKey = async (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
          setIsEditing(false)
          onTextChange(inputValue)
+         // if initialText is url, then update url
+         if (isValidUrl(initialText)) {
+            await updateUserUrl(initialText, inputValue)
+            window.location.reload()
+         } else {
+            await updateUserUrlTitle(url, inputValue)
+            window.location.reload()
+         }
       }
    }
 

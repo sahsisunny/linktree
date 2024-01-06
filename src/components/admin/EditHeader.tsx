@@ -5,7 +5,7 @@ import { IoCloseSharp } from 'react-icons/io5'
 import { LuImage } from 'react-icons/lu'
 
 import getUri from '@/actions/getUri'
-import { updateUserProfile } from '@/actions/updateUrls'
+import { updateUserProfile } from '@/actions/userProfileCrud'
 import { imageUpload } from '@/actions/uploadImage'
 
 interface Props {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getProfileDetails } from '@/actions/updateUrls'
+import { getProfileDetails } from '@/actions/userProfileCrud'
 import uriExist from '@/actions/uriExist'
 import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'

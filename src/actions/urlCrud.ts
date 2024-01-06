@@ -1,6 +1,13 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { archiveUrl, deleteUrl, getUrlByUrl, UrlModel } from '@/models/url'
+import {
+   archiveUrl,
+   deleteUrl,
+   getUrlByUrl,
+   UrlModel,
+   updateTitle,
+   updateUrl,
+} from '@/models/url'
 import { getDomainFromUrl } from '@/utils/urlUtils'
 
 export async function deleteUserUrl(url: string) {
@@ -83,6 +90,29 @@ export async function getUserArchivedUrls(uri: string) {
          .sort({ order: 1 })
          .exec()
 
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function updateUserUrlTitle(url: string, title: string) {
+   mongoConnect()
+   try {
+      const page = await updateTitle(url, title)
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+// update url
+export async function updateUserUrl(url: string, newUrl: string) {
+   mongoConnect()
+   try {
+      const page = await updateUrl(url, newUrl)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)
