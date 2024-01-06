@@ -21,9 +21,9 @@ function HomeForm() {
             setError('Username is taken')
          } else {
             try {
-               const username = await grabUsername(uri)
-               if (username) {
-                  window.location.href = `/${username}`
+               const userProfile = await grabUsername(uri)
+               if (userProfile) {
+                  window.location.href = `/${userProfile.uri}`
                }
             } catch (error) {
                console.log(error)
