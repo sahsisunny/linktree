@@ -53,3 +53,84 @@ body,
    box-sizing: border-box;
    box-shadow: 5px 2px 20px #000;
 }
+
+/*  */
+.card-group,
+.card {
+   /* border: 1px solid rgba(255, 255, 255, 0.5); */
+   position: relative;
+}
+
+.card-group,
+.big-card {
+   width: 30vmin;
+   height: 50vmin;
+   border-radius: 20px;
+}
+
+.card {
+   /* background-color: rgba(255, 255, 255, 0.5); */
+   position: absolute;
+}
+
+.big-card {
+   width: 30vmin;
+   border-radius: 1vmin;
+}
+
+.little-card {
+   width: 12vmin;
+   height: 20vmin;
+   border-radius: 2vmin;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.big-card:nth-child(2) {
+   transform: translateX(-10%) rotate(-1deg);
+}
+
+.big-card:nth-child(4) {
+   transform: rotate(2deg);
+}
+
+.big-card:nth-child(6) {
+   transform: translateX(-6%) rotate(-3deg);
+}
+
+.big-card:nth-child(8) {
+   transform: translateX(10%, 3%) rotate(5deg);
+}
+
+.card-group:hover > .big-card:nth-child(2) {
+   transform: translate(-75%, 18%) rotate(-24deg);
+}
+
+.card-group:hover > .big-card:nth-child(4) {
+   transform: translate(-25%, 8%) rotate(-8deg);
+}
+
+.card-group:hover > .big-card:nth-child(6) {
+   transform: translate(25%, 8%) rotate(8deg);
+}
+
+.card-group:hover > .big-card:nth-child(8) {
+   transform: translate(75%, 16%) rotate(24deg);
+}
+
+.card-group:hover > .little-card:nth-child(1) {
+   transform: translate(200%, -160%) rotate(-15deg);
+}
+
+.card-group:hover > .little-card:nth-child(3) {
+   transform: translate(160%, 170%) rotate(15deg);
+}
+
+.card-group:hover > .little-card:nth-child(5) {
+   transform: translate(-200%, -170%) rotate(15deg);
+}
+
+.card-group:hover > .little-card:nth-child(7) {
+   transform: translate(-280%, 140%) rotate(-15deg);
+}

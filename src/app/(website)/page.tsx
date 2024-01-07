@@ -1,6 +1,7 @@
 import getAllUsers from '@/actions/getAllUsers'
 import HeroSection from '@/components/home/HeroSection'
 import HomeUserSection from '@/components/home/HomeUserSection'
+import ShowCase from '@/components/home/ShowCase'
 import { Users } from '@/types/user'
 
 export default async function HomePage() {
@@ -9,6 +10,7 @@ export default async function HomePage() {
       <>
          <HeroSection />
          {users && <HomeUserSection users={users} />}
+         <ShowCase />
       </>
    )
 }
