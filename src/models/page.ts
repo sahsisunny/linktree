@@ -45,12 +45,10 @@ export async function updateProfile(
    if (image !== undefined && image !== '') {
       updateFields.image = image
    }
-   console.log(updateFields)
 
    return await PageModel.updateOne({ uri: uri }, { $set: updateFields })
 }
 
-// get page by uri
 export async function getPageByUri(uri: string) {
    return await PageModel.findOne({ uri: uri })
 }

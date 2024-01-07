@@ -11,28 +11,42 @@ import { imageUpload } from '@/actions/uploadImage'
 interface Props {
    setClose: () => void
    email: string
+   profile: any
 }
 
-const EditHeader: React.FC<Props> = ({ setClose, email }) => {
-   const [image, setImage] = useState<File | null>(null)
-   const [fullName, setFullName] = useState('')
-   const [bio, setBio] = useState('')
+const EditHeader: React.FC<Props> = ({ setClose, email, profile }) => {
+   const [image, setImage] = useState<File | string>(profile?.image || '')
+   const [fullName, setFullName] = useState(profile?.name || '')
+   const [bio, setBio] = useState(profile?.bio || '')
 
    const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const files = e.target.files
       if (files && files.length > 0) {
+         if (!files[0].type.includes('image')) {
+            alert('Please select an image')
+            return
+         }
          setImage(files[0])
       }
    }
 
    const onSubmit = async () => {
-      const imageUrl = await imageUpload(image as File)
+      // if nothing changed then close the modal
+      if (
+         image === profile?.image &&
+         fullName === profile?.name &&
+         bio === profile?.bio
+      ) {
+         setClose()
+         return
+      }
       const uri = await getUri(email)
       if (uri) {
+         const imageUrl = await imageUpload(image as File)
          const url = await updateUserProfile(uri, bio, fullName, imageUrl)
          if (url) {
-            console.log(url)
             setClose()
+            window.location.reload()
          }
       }
    }
@@ -56,6 +70,7 @@ const EditHeader: React.FC<Props> = ({ setClose, email }) => {
                      className="flex flex-col justify-center items-center rounded-full  text-black  w-[150px] h-[150px] cursor-pointer border-2"
                   >
                      <input
+                        accept="image/*"
                         type="file"
                         id="image"
                         className="hidden"
@@ -64,7 +79,11 @@ const EditHeader: React.FC<Props> = ({ setClose, email }) => {
 
                      {image ? (
                         <Image
-                           src={URL.createObjectURL(image)}
+                           src={
+                              typeof image === 'string'
+                                 ? image
+                                 : URL.createObjectURL(image)
+                           }
                            alt="profile image"
                            className="w-[150px] h-[150px] object-cover rounded-full"
                            width={150}
@@ -83,6 +102,7 @@ const EditHeader: React.FC<Props> = ({ setClose, email }) => {
                placeholder="Full Name"
                value={fullName}
                onChange={(e) => setFullName(e.target.value)}
+               maxLength={20}
             />
 
             <textarea

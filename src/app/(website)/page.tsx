@@ -8,7 +8,7 @@ export default async function HomePage() {
    return (
       <>
          <HeroSection />
-         <HomeUserSection users={users} />
+         {users && <HomeUserSection users={users} />}
       </>
    )
 }

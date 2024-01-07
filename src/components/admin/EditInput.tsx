@@ -7,9 +7,14 @@ import { isValidUrl } from '@/utils/urlUtils'
 interface EditInputProps {
    initialText: string
    url: string
+   maxLength: number
 }
 
-export const EditInput: React.FC<EditInputProps> = ({ initialText, url }) => {
+export const EditInput: React.FC<EditInputProps> = ({
+   initialText,
+   url,
+   maxLength,
+}) => {
    const [isEditing, setIsEditing] = useState(false)
    const [inputValue, setInputValue] = useState(initialText)
    const inputRef = useRef<HTMLInputElement>(null)
@@ -32,7 +37,6 @@ export const EditInput: React.FC<EditInputProps> = ({ initialText, url }) => {
       if (e.key === 'Enter') {
          setIsEditing(false)
          onTextChange(inputValue)
-         // if initialText is url, then update url
          if (isValidUrl(initialText)) {
             await updateUserUrl(initialText, inputValue)
             window.location.reload()
@@ -57,6 +61,7 @@ export const EditInput: React.FC<EditInputProps> = ({ initialText, url }) => {
                onChange={handleInputChange}
                onKeyDown={handleEnterKey}
                ref={inputRef}
+               maxLength={maxLength}
             />
          ) : (
             <>

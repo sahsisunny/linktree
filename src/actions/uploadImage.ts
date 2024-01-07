@@ -1,6 +1,5 @@
 export const imageUpload = async (image: File) => {
    const bodyData = new FormData()
-   const UploadPrerset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
    bodyData.append('file', image)
    bodyData.append('upload_preset', 'mj53rhpy')
 
@@ -18,8 +17,7 @@ export const imageUpload = async (image: File) => {
       }
 
       const data = await res.json()
-      console.log('imagedata', data)
-      return data.secure_url // Assuming Cloudinary provides the URL in 'secure_url'
+      return data.secure_url
    } catch (error) {
       console.error('Error uploading image:', error)
       return null

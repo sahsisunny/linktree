@@ -74,8 +74,8 @@ function EditLinks({
                      />
                   </div>
                   <div className="flex flex-col gap-2 w-[90%]">
-                     <EditInput initialText={title} url={url} />
-                     <EditInput initialText={url} url={url} />
+                     <EditInput initialText={title} url={url} maxLength={20} />
+                     <EditInput initialText={url} url={url} maxLength={50} />
                      <div className="flex gap-2 w-[full]">
                         {isArchive ? (
                            <MdOutlineUnarchive

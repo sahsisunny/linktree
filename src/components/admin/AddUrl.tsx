@@ -16,6 +16,10 @@ const AddUrl: React.FC<Props> = ({ setClose, email }) => {
    const [error, setError] = useState('Enter the URL')
    const onSubmit = async () => {
       const uri = await getUri(email)
+      if (!uri) {
+         setError('Create a Username first')
+         return
+      }
       const res = await addUserUrl(uri, url)
       if (res?.error) {
          setError(res.error)

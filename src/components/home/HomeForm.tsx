@@ -50,12 +50,13 @@ function HomeForm() {
          >
             <div className="flex border-r border-gray-300 rounded-lg sm:rounded-none">
                <span className="bg-white py-4 pl-4 rounded-l-lg sm:rounded-none">
-                  LinkHub.io/
+                  linkhub.io/
                </span>
                <input
                   type="text"
                   className="py-4 outline-none rounded-r-lg sm:rounded-none"
                   placeholder="username"
+                  maxLength={20}
                />
             </div>
             {error && (

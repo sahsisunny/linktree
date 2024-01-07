@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { BsCardHeading } from 'react-icons/bs'
 import { FaPlus } from 'react-icons/fa6'
-import { FiArchive } from 'react-icons/fi'
+import { getProfileDetailsByEmail } from '@/actions/userProfileCrud'
 
 import AddUrl from '@/components/admin/AddUrl'
 
@@ -15,12 +15,15 @@ interface Props {
 const AddButton: React.FC<Props> = ({ email }) => {
    const [showAddUrl, setShowAddUrl] = useState(true)
    const [showAddHeader, setShowAddHeader] = useState(false)
+   const [profile, setProfile] = useState<any>({})
 
    const handleToggleAddUrl = () => {
       setShowAddUrl((prev) => !prev)
    }
 
-   const handleToggleAddHeader = () => {
+   const handleToggleAddHeader = async () => {
+      const profile = await getProfileDetailsByEmail(email)
+      setProfile(profile)
       setShowAddHeader((prev) => !prev)
    }
 
@@ -30,6 +33,7 @@ const AddButton: React.FC<Props> = ({ email }) => {
             <EditHeader
                setClose={() => setShowAddHeader(false)}
                email={email}
+               profile={profile}
             />
          ) : (
             <>

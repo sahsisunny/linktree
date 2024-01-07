@@ -1,6 +1,6 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { getPageByUri, updateProfile } from '@/models/page'
+import { getPageByUri, updateProfile, getPageByEmail } from '@/models/page'
 
 export async function updateUserProfile(
    uri: string,
@@ -23,6 +23,17 @@ export async function getProfileDetails(uri: string) {
    mongoConnect()
    try {
       const page = await getPageByUri(uri)
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function getProfileDetailsByEmail(email: string) {
+   mongoConnect()
+   try {
+      const page = await getPageByEmail(email)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)
