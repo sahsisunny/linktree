@@ -36,7 +36,7 @@ function HomeForm() {
    }
 
    return (
-      <section className="flex flex-col justify-center sm:p-20 p-6 gap-6">
+      <section className="flex flex-col justify-center lg:p-20 py-20 px-6  gap-6">
          <h1 className="sm:text-6xl text-5xl font-bold">
             Your one link for everything
          </h1>

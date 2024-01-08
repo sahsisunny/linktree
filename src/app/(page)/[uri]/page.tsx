@@ -22,7 +22,7 @@ export default async function PublicPage({
    const profileData = await getProfileDetails(uri)
 
    return (
-      <section className="flex flex-col gap-4 justify-center items-center sm:p-20 p-4 w-full">
+      <section className="flex flex-col gap-4 justify-center min-h screen items-center sm:p-20 p-4 w-full">
          <ProfileSection
             uri={profileData.uri}
             name={profileData.name}
