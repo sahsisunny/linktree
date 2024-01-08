@@ -46,33 +46,20 @@ const UpdateOrder: React.FC<UpdateOrderProps> = ({
    }, [number, url, debounceUpdateOrder])
 
    return (
-      <div className="flex flex-col rounded-[30px]">
-         <div className="px-4 flex justify-center items-center relative w-full">
-            <p className="text-lg font-bold w-full text-center">Edit Order</p>
-            <button
-               className="bg-transparent text-gray-200 p-2 text-2xl rounded-full"
-               onClick={onClose}
-            >
-               <MdClose className="text-2xl hover:" />
-            </button>
-         </div>
-         <div className="flex flex-col gap-2 p-2 w-full">
-            <div className="flex flex-row justify-center items-center gap-6">
-               <button
-                  className="bg-transparent text-gray-200  text-2xl rounded-full transition duration-500 ease-in-out hover:bg-gray-200 hover:text-black p-2"
-                  onClick={decrementByOne}
-               >
-                  <GrSubtractCircle className="text-2xl" />
-               </button>
-               <p className="text-xl font-bold p-2 text-center">{number}</p>
-               <button
-                  className="bg-transparent text-gray-200  text-2xl rounded-full transition duration-500 ease-in-out hover:bg-gray-200 hover:text-black p-2"
-                  onClick={incrementByOne}
-               >
-                  <GrAddCircle className="text-2xl" />
-               </button>
-            </div>
-         </div>
+      <div className="flex flex-row justify-center items-center gap-6">
+         <button
+            className="bg-transparent text-gray-200  rounded-full transition duration-500 ease-in-out hover:bg-gray-200 hover:text-black"
+            onClick={decrementByOne}
+         >
+            <GrSubtractCircle />
+         </button>
+         <p className=" font-bold text-center">{number}</p>
+         <button
+            className="bg-transparent text-gray-200   rounded-full transition duration-500 ease-in-out hover:bg-gray-200 hover:text-black"
+            onClick={incrementByOne}
+         >
+            <GrAddCircle />
+         </button>
       </div>
    )
 }

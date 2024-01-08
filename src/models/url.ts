@@ -25,7 +25,11 @@ export async function getUrlByUrl(url: string) {
    return await UrlModel.findOne({ url: url })
 }
 
-export async function deleteUrl(url: string) {
+export async function deleteUrl(url: string, isDeleted: boolean) {
+   return await UrlModel.updateOne({ url: url }, { isDeleted: isDeleted })
+}
+
+export async function deleteUrlForever(url: string) {
    return await UrlModel.deleteOne({ url: url })
 }
 

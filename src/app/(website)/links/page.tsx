@@ -8,7 +8,11 @@ import EditLinks from '@/components/admin/EditLinks'
 import MobilePreview from '@/components/admin/MobilePreview'
 import { Url } from '@/types/url'
 import authOptions from '@/utils/authOptions'
-import { getUserAllUrls, getUserArchivedUrls } from '@/actions/urlCrud'
+import {
+   getUserAllUrls,
+   getUserArchivedUrls,
+   getUserDeletedUrls,
+} from '@/actions/urlCrud'
 
 async function Links() {
    const sesion = await getServerSession(authOptions)
@@ -16,6 +20,7 @@ async function Links() {
    const uri = await getUri(email)
    const urls = await getUserAllUrls(uri)
    const archivedUrls = await getUserArchivedUrls(uri)
+   const deletedUrls = await getUserDeletedUrls(uri)
 
    if (!sesion) {
       redirect('/login')
@@ -30,6 +35,7 @@ async function Links() {
                   url={url.url}
                   title={url.title}
                   isArchive={url.isArchived}
+                  isDeleted={url.isDeleted}
                   totalUrls={urls.length}
                   order={url.order}
                />
@@ -47,6 +53,25 @@ async function Links() {
                   url={url.url}
                   title={url.title}
                   isArchive={url.isArchived}
+                  isDeleted={url.isDeleted}
+                  totalUrls={urls.length}
+                  order={url.order}
+               />
+            ))}
+            <h1
+               className={`${
+                  deletedUrls.length > 0 ? 'block' : 'hidden'
+               } text-2xl font-bold text-center w-full mt-8`}
+            >
+               Deleted Links
+            </h1>
+            {deletedUrls.map((url: Url, index: number) => (
+               <EditLinks
+                  key={index}
+                  url={url.url}
+                  title={url.title}
+                  isArchive={url.isArchived}
+                  isDeleted={url.isDeleted}
                   totalUrls={urls.length}
                   order={url.order}
                />

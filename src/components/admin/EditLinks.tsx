@@ -1,20 +1,31 @@
 'use client'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { MdDeleteOutline, MdOutlineUnarchive } from 'react-icons/md'
+import {
+   MdDeleteOutline,
+   MdOutlineArchive,
+   MdOutlineUnarchive,
+   MdRestoreFromTrash,
+   MdDeleteForever,
+} from 'react-icons/md'
 import { RiDraggable } from 'react-icons/ri'
 import { GoListOrdered } from 'react-icons/go'
 
 import { EditInput } from '@/components/admin/EditInput'
-import DeleteDialog from '@/components/dialog/DeleteDialog'
 import UpdateOrder from '@/components/dialog/UpdateOrder'
 import Tooltip from '@/components/Tooltip'
 import { extractBaseUrl } from '@/utils/urlUtils'
+import {
+   archiveUserUrl,
+   deleteUserUrl,
+   deleteUserUrlForever,
+} from '@/actions/urlCrud'
 
 interface EditLinksProps {
    url: string
    title: string
    isArchive: boolean
+   isDeleted: boolean
    totalUrls: number
    order: number
 }
@@ -23,18 +34,26 @@ function EditLinks({
    url,
    title,
    isArchive,
+   isDeleted,
    totalUrls,
    order,
 }: EditLinksProps) {
-   const [isModalOpen, setIsModalOpen] = useState(false)
-   const [isUpdateOrderOpen, setIsUpdateOrderOpen] = useState(false)
+   const [updateOrderModal, setUpdateOrderModal] = useState(false)
+
    const handleDelete = async () => {
-      setIsModalOpen(!isModalOpen)
-      setIsUpdateOrderOpen(false)
+      await deleteUserUrl(url, !isDeleted)
+      window.location.reload()
    }
    const handleOrder = async () => {
-      setIsUpdateOrderOpen(!isUpdateOrderOpen)
-      setIsModalOpen(false)
+      setUpdateOrderModal(!updateOrderModal)
+   }
+   const handleArchive = async () => {
+      await archiveUserUrl(url, !isArchive)
+      window.location.reload()
+   }
+   const handleDeleteForever = async () => {
+      await deleteUserUrlForever(url)
+      window.location.reload()
    }
 
    const dragItem = React.useRef<HTMLDivElement>(null)
@@ -79,40 +98,50 @@ function EditLinks({
                      <EditInput initialText={url} url={url} maxLength={50} />
                      <div className="flex gap-4 w-[full]">
                         {isArchive ? (
-                           <Tooltip onClick={handleDelete} text="Unarchive">
+                           <Tooltip onClick={handleArchive} text="Unarchive">
                               <MdOutlineUnarchive className="text-2xl cursor-pointer" />
                            </Tooltip>
+                        ) : (
+                           <Tooltip onClick={handleArchive} text="Archive">
+                              <MdOutlineArchive className="text-2xl cursor-pointer" />
+                           </Tooltip>
+                        )}
+
+                        <Tooltip onClick={handleOrder} text="Change Order">
+                           <GoListOrdered className="text-2xl cursor-pointer" />
+                        </Tooltip>
+                        {updateOrderModal && (
+                           <UpdateOrder
+                              isOpen={updateOrderModal}
+                              onClose={() => setUpdateOrderModal(false)}
+                              url={url}
+                              totalUrls={totalUrls}
+                              order={order}
+                           ></UpdateOrder>
+                        )}
+
+                        {isDeleted ? (
+                           <>
+                              <Tooltip onClick={handleDelete} text="Restore">
+                                 <MdRestoreFromTrash className="text-2xl cursor-pointer" />
+                              </Tooltip>
+                              <Tooltip
+                                 onClick={handleDeleteForever}
+                                 text="Delete Forever"
+                              >
+                                 <MdDeleteForever className="text-2xl cursor-pointer" />
+                              </Tooltip>
+                           </>
                         ) : (
                            <Tooltip onClick={handleDelete} text="Delete">
                               <MdDeleteOutline className="text-2xl cursor-pointer" />
                            </Tooltip>
                         )}
-
-                        <Tooltip onClick={handleOrder} text="Change Order">
-                           <GoListOrdered className="text-2xl cursor-pointer" />{' '}
-                        </Tooltip>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         {isModalOpen && (
-            <DeleteDialog
-               isOpen={isModalOpen}
-               onClose={() => setIsModalOpen(false)}
-               url={url}
-               isArchive={isArchive}
-            ></DeleteDialog>
-         )}
-         {isUpdateOrderOpen && (
-            <UpdateOrder
-               isOpen={isUpdateOrderOpen}
-               onClose={() => setIsUpdateOrderOpen(false)}
-               url={url}
-               totalUrls={totalUrls}
-               order={order}
-            ></UpdateOrder>
-         )}
       </div>
    )
 }

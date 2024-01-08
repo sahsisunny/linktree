@@ -39,7 +39,11 @@ export const EditInput: React.FC<EditInputProps> = ({
          setIsEditing(false)
          onTextChange(inputValue)
          if (isValidUrl(initialText)) {
-            await updateUserUrl(initialText, inputValue)
+            if (isValidUrl(inputValue)) {
+               await updateUserUrl(initialText, inputValue)
+            } else {
+               alert('Invalid URL')
+            }
             window.location.reload()
          } else {
             await updateUserUrlTitle(url, inputValue)

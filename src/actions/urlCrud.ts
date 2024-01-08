@@ -8,6 +8,7 @@ import {
    updateTitle,
    updateUrl,
    updateOrder,
+   deleteUrlForever,
 } from '@/models/url'
 import { getDomainFromUrl } from '@/utils/urlUtils'
 
@@ -17,7 +18,11 @@ export async function getUserAllUrls(uri: string) {
    mongoConnect()
 
    try {
-      const page = await UrlModel.find({ uri: uri, isArchived: false }).sort({
+      const page = await UrlModel.find({
+         uri: uri,
+         isArchived: false,
+         isDeleted: false,
+      }).sort({
          order: 1,
       })
 
@@ -32,7 +37,26 @@ export async function getUserArchivedUrls(uri: string) {
    mongoConnect()
 
    try {
-      const page = await UrlModel.find({ uri: uri, isArchived: true })
+      const page = await UrlModel.find({
+         uri: uri,
+         isArchived: true,
+         isDeleted: false,
+      })
+         .sort({ order: 1 })
+         .exec()
+
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function getUserDeletedUrls(uri: string) {
+   mongoConnect()
+
+   try {
+      const page = await UrlModel.find({ uri: uri, isDeleted: true })
          .sort({ order: 1 })
          .exec()
 
@@ -44,11 +68,10 @@ export async function getUserArchivedUrls(uri: string) {
 }
 
 // DELETE
-
-export async function deleteUserUrl(url: string) {
+export async function deleteUserUrlForever(url: string) {
    mongoConnect()
    try {
-      const page = await deleteUrl(url)
+      const page = await deleteUrlForever(url)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)
@@ -72,6 +95,17 @@ export async function archiveUserUrl(url: string, archived: boolean) {
    mongoConnect()
    try {
       const page = await archiveUrl(url, archived)
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function deleteUserUrl(url: string, isDeleted: boolean) {
+   mongoConnect()
+   try {
+      const page = await deleteUrl(url, isDeleted)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)
