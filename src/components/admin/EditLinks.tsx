@@ -8,6 +8,7 @@ import { GoListOrdered } from 'react-icons/go'
 import { EditInput } from '@/components/admin/EditInput'
 import DeleteDialog from '@/components/dialog/DeleteDialog'
 import UpdateOrder from '@/components/dialog/UpdateOrder'
+import Tooltip from '@/components/Tooltip'
 import { extractBaseUrl } from '@/utils/urlUtils'
 
 interface EditLinksProps {
@@ -76,22 +77,20 @@ function EditLinks({
                   <div className="flex flex-col gap-2 w-[90%]">
                      <EditInput initialText={title} url={url} maxLength={20} />
                      <EditInput initialText={url} url={url} maxLength={50} />
-                     <div className="flex gap-2 w-[full]">
+                     <div className="flex gap-4 w-[full]">
                         {isArchive ? (
-                           <MdOutlineUnarchive
-                              className="text-2xl cursor-pointer"
-                              onClick={handleDelete}
-                           />
+                           <Tooltip onClick={handleDelete} text="Unarchive">
+                              <MdOutlineUnarchive className="text-2xl cursor-pointer" />
+                           </Tooltip>
                         ) : (
-                           <MdDeleteOutline
-                              className="text-2xl cursor-pointer"
-                              onClick={handleDelete}
-                           />
+                           <Tooltip onClick={handleDelete} text="Delete">
+                              <MdDeleteOutline className="text-2xl cursor-pointer" />
+                           </Tooltip>
                         )}
-                        <GoListOrdered
-                           className="text-2xl cursor-pointer"
-                           onClick={handleOrder}
-                        />
+
+                        <Tooltip onClick={handleOrder} text="Change Order">
+                           <GoListOrdered className="text-2xl cursor-pointer" />{' '}
+                        </Tooltip>
                      </div>
                   </div>
                </div>

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { MdOutlineModeEdit } from 'react-icons/md'
 import { updateUserUrlTitle, updateUserUrl } from '@/actions/urlCrud'
 import { isValidUrl } from '@/utils/urlUtils'
+import Tooltip from '@/components/Tooltip'
 
 interface EditInputProps {
    initialText: string
@@ -68,9 +69,13 @@ export const EditInput: React.FC<EditInputProps> = ({
                <p className="font-semibold max-w-[85%] whitespace-nowrap overflow-hidden overflow-ellipsis">
                   {inputValue}
                </p>
-               <button className="text-xl" onClick={handleEditClick}>
+
+               <Tooltip
+                  text={isValidUrl(initialText) ? 'Edit URL' : 'Edit Title'}
+                  onClick={handleEditClick}
+               >
                   <MdOutlineModeEdit className="text-xl" />
-               </button>
+               </Tooltip>
             </>
          )}
       </div>

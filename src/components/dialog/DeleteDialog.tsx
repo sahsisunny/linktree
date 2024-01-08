@@ -33,7 +33,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({
    }
 
    return (
-      <div className="flex flex-col bgr rounded-[30px]">
+      <div className="flex flex-col rounded-[30px]">
          <div className="px-4 flex justify-center items-center relative w-full">
             <p className="text-lg font-bold w-full text-center">
                Are you sure?
