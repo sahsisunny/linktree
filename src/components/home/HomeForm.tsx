@@ -38,7 +38,7 @@ function HomeForm() {
    )
 
    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const trimmedInput = e.target.value.trim()
+      const trimmedInput = e.target.value.trim().toLowerCase()
       debounceUriExist(trimmedInput)
    }
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -101,6 +101,7 @@ function HomeForm() {
                            className="w-full outline-none font-normal lg:text-2xl  text-lg placeholder:font-normal bg-transparent"
                            onChange={onChangeHandler}
                            autoFocus
+                           style={{ textTransform: 'lowercase' }}
                         />
                      </div>
                   </div>
