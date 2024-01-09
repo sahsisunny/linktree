@@ -1,6 +1,6 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { getUriByUri } from '@/models/page'
+import { getUriByUri } from '@/models/uriModel'
 
 export default async function uriExist(uri: string) {
    mongoConnect()

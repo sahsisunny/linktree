@@ -9,7 +9,7 @@ import {
    updateUrl,
    updateOrder,
    deleteUrlForever,
-} from '@/models/url'
+} from '@/models/urlModel'
 import { getDomainFromUrl } from '@/utils/urlUtils'
 
 // GET

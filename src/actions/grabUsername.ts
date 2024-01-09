@@ -3,7 +3,7 @@
 import { getServerSession } from 'next-auth'
 
 import mongoConnect from '@/libs/mongoConnect'
-import { getPageByEmail, PageModel } from '@/models/page'
+import { getPageByEmail, PageModel } from '@/models/uriModel'
 import authOptions from '@/utils/authOptions'
 
 export default async function grabUsername(username: string) {

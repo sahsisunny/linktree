@@ -1,6 +1,6 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { getUriByEmail } from '@/models/page'
+import { getUriByEmail } from '@/models/uriModel'
 
 export default async function getUri(email: string) {
    mongoConnect()

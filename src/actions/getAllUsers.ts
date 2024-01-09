@@ -1,6 +1,6 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { PageModel } from '@/models/page'
+import { PageModel } from '@/models/uriModel'
 
 export default async function getAllUsers() {
    mongoConnect()

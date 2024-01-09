@@ -1,6 +1,6 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { ContactUsModel } from '@/models/contactus'
+import { ContactUsModel } from '@/models/contactusModel'
 
 type FormData = {
    name: string
