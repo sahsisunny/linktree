@@ -9,6 +9,7 @@ import uriExist from '@/actions/uriExist'
 import debounce from '@/utils/debounce'
 
 import LogoImage from '../../../public/LinkHub.webp'
+import GithubLabel from '../Label/Github'
 
 function HomeForm() {
    const [uri, setUri] = React.useState('')
@@ -69,8 +70,9 @@ function HomeForm() {
    }, [])
 
    return (
-      <section className="flex flex-col justify-center items-center text-center lg:p-20 py-20 px-6  gap-6 w-full sm:h-screen">
-         <h1 className="sm:text-6xl text-5xl font-bold">
+      <section className="flex flex-col justify-center items-center text-center lg:p-20 py-20 px-6  gap-6 w-full h-screen">
+         <GithubLabel />
+         <h1 className="sm:text-5xl text-4xl font-bold">
             Your one link for everything
          </h1>
          <h2 className="sm:text-xl text-md font-normal">

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { IoMdSettings } from 'react-icons/io'
 import { IoShapesOutline } from 'react-icons/io5'
-import { LuListTree } from 'react-icons/lu'
+import { TfiLayoutListThumbAlt } from 'react-icons/tfi'
 
 import authOptions from '@/utils/authOptions'
 
@@ -38,7 +38,7 @@ async function Header() {
                            href="/links"
                            className="flex gap-2 py-3 px-5 hover:bg-gray-100 rounded-[10px]"
                         >
-                           <LuListTree className="text-xl" />
+                           <TfiLayoutListThumbAlt className="text-xl" />
                            Links
                         </Link>
                         <Link

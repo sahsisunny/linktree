@@ -11,6 +11,7 @@ import {
 import AddButton from '@/components/admin/AddButton'
 import EditLinks from '@/components/admin/EditLinks'
 import MobilePreview from '@/components/admin/MobilePreview'
+import PreviewFloatingButton from '@/components/FloatingButton/PreviewButton'
 import { Url } from '@/types/url'
 import authOptions from '@/utils/authOptions'
 
@@ -78,6 +79,7 @@ async function Links() {
             ))}
          </div>
          <MobilePreview uri={uri} />
+         <PreviewFloatingButton uri={uri} />
       </section>
    )
 }
