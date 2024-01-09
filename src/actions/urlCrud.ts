@@ -113,7 +113,7 @@ export async function deleteUserUrl(url: string, isDeleted: boolean) {
    }
 }
 
-export async function addUserUrl(uri: string, url: string) {
+export async function addUserUrl(uri: string, uriId: string, url: string) {
    mongoConnect()
    const urlTitle = await getDomainFromUrl(url)
    if (!urlTitle) {
@@ -130,6 +130,7 @@ export async function addUserUrl(uri: string, url: string) {
       }
       const pageDoc = await UrlModel.create({
          url: url,
+         uriId: uriId,
          uri: uri,
          title: urlTitle,
          shortUrl: url,

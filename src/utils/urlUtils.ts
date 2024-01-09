@@ -40,7 +40,7 @@ export function extractBaseUrl(fullUrl: string): string {
    if (!isValid) {
       return ''
    }
-   const url = new URL(fullUrl)
-   const baseUrl = url.origin
+   const url = fullUrl.replace(/^(.*:\/\/)?/, '')
+   const baseUrl = url.split('/')[0]
    return baseUrl
 }

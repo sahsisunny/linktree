@@ -1,5 +1,6 @@
 export interface Url {
    url: string
+   uriId: string
    uri: string
    title: string
    addedAt: Date

@@ -1,20 +1,18 @@
 import { model, models, Schema } from 'mongoose'
 
-const UrlSchema = new Schema(
-   {
-      url: { type: String },
-      uri: { type: String },
-      title: { type: String },
-      addedAt: { type: Date, default: Date.now() },
-      updatedAt: { type: Date, default: Date.now() },
-      shortUrl: { type: String, unique: true },
-      order: { type: Number },
-      isPinned: { type: Boolean },
-      isDeleted: { type: Boolean },
-      isArchived: { type: Boolean },
-   },
-   { timestamps: true },
-)
+const UrlSchema = new Schema({
+   url: { type: String },
+   uriId: { type: String, required: true },
+   uri: { type: String, required: true },
+   title: { type: String },
+   addedAt: { type: Date, default: Date.now() },
+   updatedAt: { type: Date, default: Date.now() },
+   shortUrl: { type: String, unique: true },
+   order: { type: Number },
+   isPinned: { type: Boolean },
+   isDeleted: { type: Boolean },
+   isArchived: { type: Boolean },
+})
 
 export const UrlModel = models?.Url || model('Url', UrlSchema)
 

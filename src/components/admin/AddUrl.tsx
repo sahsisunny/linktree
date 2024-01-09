@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 
-import getUri from '@/actions/getUri'
 import { isValidUrl } from '@/utils/urlUtils'
 import { addUserUrl } from '@/actions/urlCrud'
+import { getUriByEmail } from '@/actions/uriCrud'
 
 interface Props {
    setClose: () => void
@@ -15,12 +15,12 @@ const AddUrl: React.FC<Props> = ({ setClose, email }) => {
    const [url, setUrl] = useState('')
    const [error, setError] = useState('Enter the URL')
    const onSubmit = async () => {
-      const uri = await getUri(email)
-      if (!uri) {
+      const uriPage = await getUriByEmail(email)
+      if (!uriPage.uri) {
          setError('Create a Username first')
          return
       }
-      const res = await addUserUrl(uri, url)
+      const res = await addUserUrl(uriPage.uri, uriPage._id, url)
       if (res?.error) {
          setError(res.error)
       } else {
