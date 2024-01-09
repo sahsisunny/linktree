@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 
-import { isValidUrl } from '@/utils/urlUtils'
-import { addUserUrl } from '@/actions/urlCrud'
 import { getUriByEmail } from '@/actions/uriCrud'
+import { addUserUrl } from '@/actions/urlCrud'
+import { isValidUrl } from '@/utils/urlUtils'
 
 interface Props {
    setClose: () => void

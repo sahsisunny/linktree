@@ -1,6 +1,6 @@
 'use server'
 import mongoConnect from '@/libs/mongoConnect'
-import { getPageByUri, updateProfile, getPageByEmail } from '@/models/uriModel'
+import { getPageByEmail, getPageByUri, updateProfile } from '@/models/uriModel'
 
 export async function updateUserProfile(
    uri: string,

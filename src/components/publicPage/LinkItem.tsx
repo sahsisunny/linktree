@@ -17,7 +17,7 @@ const LinkItem = ({ url, title }: LinkItemProps) => {
          >
             <Image
                src={`https://www.google.com/s2/favicons?domain=${url}&sz=256`}
-               alt=""
+               alt={`Favicon for ${url}`}
                className="sm:w-12 w-8 sm:h-12 h-8 rounded-full"
                width={50}
                height={50}

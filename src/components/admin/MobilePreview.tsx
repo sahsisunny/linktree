@@ -10,7 +10,6 @@ function MobilePreview({ uri }: { uri: string }) {
                width="100%"
                height="100%"
                title={`${uri} preview`}
-               allowTransparency={true}
                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                className="rounded-[25px]"
             ></iframe>

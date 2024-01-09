@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { getProfileDetails } from '@/actions/userProfileCrud'
 import uriExist from '@/actions/uriExist'
+import { getUserAllUrls } from '@/actions/urlCrud'
+import { getProfileDetails } from '@/actions/userProfileCrud'
 import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'
 import ProfileSection from '@/components/publicPage/ProfileSection'
 import { Url } from '@/types/url'
-import { getUserAllUrls } from '@/actions/urlCrud'
 
 export default async function PublicPage({
    params,

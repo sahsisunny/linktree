@@ -5,9 +5,10 @@ import React from 'react'
 import { IoMdSettings } from 'react-icons/io'
 import { IoShapesOutline } from 'react-icons/io5'
 import { LuListTree } from 'react-icons/lu'
-import LogoImage from '../../../public/LinkHub.webp'
+
 import authOptions from '@/utils/authOptions'
 
+import LogoImage from '../../../public/LinkHub.webp'
 import LogOutButton from '../buttons/LogOutButton'
 
 async function Header() {

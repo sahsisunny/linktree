@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import DummyProfile from './../../../public/user.webp'
+
+import DummyProfile from '../../../public/user.webp'
 
 type Props = {
    name: string

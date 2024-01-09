@@ -1,6 +1,6 @@
-import React from 'react'
 import mobilePic from '/public/mobile.png'
 import Image from 'next/image'
+import React from 'react'
 
 function ShowCase() {
    const ImageCom = () => {

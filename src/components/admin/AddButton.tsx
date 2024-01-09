@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import { BsCardHeading } from 'react-icons/bs'
 import { FaPlus } from 'react-icons/fa6'
-import { getProfileDetailsByEmail } from '@/actions/userProfileCrud'
 
+import { getProfileDetailsByEmail } from '@/actions/userProfileCrud'
 import AddUrl from '@/components/admin/AddUrl'
 
 import EditHeader from './EditHeader'

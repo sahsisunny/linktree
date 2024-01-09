@@ -1,4 +1,5 @@
 import React from 'react'
+
 interface TooltipProps {
    children: React.ReactNode
    onClick?: () => void
@@ -16,7 +17,7 @@ function Tooltip({ children, onClick, text }: TooltipProps) {
                <div className="rounded-lg bgr border-x-2 py-2 px-4 shadow-lg">
                   <p className="whitespace-nowrap">{text}</p>
                </div>
-               <div className="h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-white"></div>
+               <div className="h-0 w-fit border-l-8 border-r-8 border-t-8 border-transparent border-t-gray-400"></div>
             </div>
          </div>
       </div>

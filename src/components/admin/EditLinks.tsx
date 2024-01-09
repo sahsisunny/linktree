@@ -1,25 +1,25 @@
 'use client'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { GoListOrdered } from 'react-icons/go'
 import {
+   MdDeleteForever,
    MdDeleteOutline,
    MdOutlineArchive,
    MdOutlineUnarchive,
    MdRestoreFromTrash,
-   MdDeleteForever,
 } from 'react-icons/md'
 import { RiDraggable } from 'react-icons/ri'
-import { GoListOrdered } from 'react-icons/go'
 
-import { EditInput } from '@/components/admin/EditInput'
-import UpdateOrder from '@/components/dialog/UpdateOrder'
-import Tooltip from '@/components/Tooltip'
-import { extractBaseUrl } from '@/utils/urlUtils'
 import {
    archiveUserUrl,
    deleteUserUrl,
    deleteUserUrlForever,
 } from '@/actions/urlCrud'
+import { EditInput } from '@/components/admin/EditInput'
+import UpdateOrder from '@/components/dialog/UpdateOrder'
+import Tooltip from '@/components/Tooltip'
+import { extractBaseUrl } from '@/utils/urlUtils'
 
 interface EditLinksProps {
    url: string
@@ -84,10 +84,8 @@ function EditLinks({
                <div className="flex  gap-2 w-full">
                   <div className="flex justify-center items-center p-2 w-[50px]">
                      <Image
-                        src={`https://www.google.com/s2/favicons?domain=${extractBaseUrl(
-                           url,
-                        )}&sz=256`}
-                        alt=""
+                        src={`https://www.google.com/s2/favicons?domain=${url}&sz=256`}
+                        alt={`Favicon for ${extractBaseUrl(url)}`}
                         className="rounded-full"
                         width={50}
                         height={50}

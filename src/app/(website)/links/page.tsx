@@ -3,16 +3,16 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 import getUri from '@/actions/getUri'
-import AddButton from '@/components/admin/AddButton'
-import EditLinks from '@/components/admin/EditLinks'
-import MobilePreview from '@/components/admin/MobilePreview'
-import { Url } from '@/types/url'
-import authOptions from '@/utils/authOptions'
 import {
    getUserAllUrls,
    getUserArchivedUrls,
    getUserDeletedUrls,
 } from '@/actions/urlCrud'
+import AddButton from '@/components/admin/AddButton'
+import EditLinks from '@/components/admin/EditLinks'
+import MobilePreview from '@/components/admin/MobilePreview'
+import { Url } from '@/types/url'
+import authOptions from '@/utils/authOptions'
 
 async function Links() {
    const sesion = await getServerSession(authOptions)

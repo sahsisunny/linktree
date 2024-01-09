@@ -8,10 +8,8 @@ export default async function HomePage() {
    const users = (await getAllUsers()) as Users
    return (
       <>
-         <div className="flex lg:flex-row flex-col justify-center items-center min-h-screen">
-            <HeroSection />
-            <ShowCase />
-         </div>
+         <HeroSection />
+         {/* <ShowCase /> */}
          {users && <HomeUserSection users={users} />}
       </>
    )

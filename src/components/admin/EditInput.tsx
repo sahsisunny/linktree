@@ -1,9 +1,10 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import { MdOutlineModeEdit } from 'react-icons/md'
-import { updateUserUrlTitle, updateUserUrl } from '@/actions/urlCrud'
-import { isValidUrl } from '@/utils/urlUtils'
+
+import { updateUserUrl, updateUserUrlTitle } from '@/actions/urlCrud'
 import Tooltip from '@/components/Tooltip'
+import { isValidUrl } from '@/utils/urlUtils'
 
 interface EditInputProps {
    initialText: string

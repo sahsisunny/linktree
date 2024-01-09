@@ -8,7 +8,9 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body>
-            <main>{children}</main>
+            <main className="flex justify-center items-center min-h-screen">
+               {children}
+            </main>
          </body>
       </html>
    )

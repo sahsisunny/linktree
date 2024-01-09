@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import DummyProfile from './../../../public/user.webp'
+
+import DummyProfile from '../../../public/user.webp'
 
 interface ProfileSectionProps {
    uri: string
@@ -14,9 +15,9 @@ const ProfileSection = ({ uri, name, bio, image }: ProfileSectionProps) => {
          <Image
             src={image ? image : DummyProfile}
             alt={name}
-            width={300}
-            height={300}
-            className="sm:w-48 w-28 sm:h-48 h-28 rounded-full"
+            width={500}
+            height={500}
+            className="sm:w-48 w-28 sm:h-48 h-28 rounded-full object-cover"
          />
          <span className="sm:text-xl text-md font-semibold text-gray-400 mt-2">
             @{uri}
