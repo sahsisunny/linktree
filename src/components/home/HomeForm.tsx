@@ -70,7 +70,7 @@ function HomeForm() {
    }, [])
 
    return (
-      <section className="flex flex-col justify-center items-center text-center lg:p-20 py-20 px-6  gap-6 w-full h-screen">
+      <section className="flex flex-col justify-center items-center text-center lg:p-20 py-28 px-6  gap-6 w-full sm:h-screen">
          <GithubLabel />
          <h1 className="sm:text-5xl text-4xl font-bold">
             Your one link for everything
