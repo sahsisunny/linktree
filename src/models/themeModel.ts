@@ -17,7 +17,7 @@ const themeSchema = new Schema<StyleType & Document>({
 
 export const StyleModel = models?.Style || model('Style', themeSchema)
 
-export const getStyleByUriId = async (uriId: string) => {
+export const getStyleByUriIdModel = async (uriId: string) => {
    return await StyleModel.findOne({ uriId })
 }
 
@@ -34,8 +34,31 @@ export const updateStyle = async (
    return await StyleModel.updateOne({ uriId }, createUpdateQuery(updates))
 }
 
-export const updateBackground = async (uriId: string, background: string) => {
+export const updateBackgroundModel = async (
+   uriId: string,
+   background: string,
+) => {
    return await updateStyle(uriId, { background })
+}
+
+export const updateLinkBackgroundModel = async (
+   uriId: string,
+   background: string,
+) => {
+   const updateQuery = {
+      $set: {
+         'linkListStyle.background': background,
+      },
+   }
+   const result = await StyleModel.updateOne({ uriId }, updateQuery)
+}
+export const updateLinkTypeModel = async (uriId: string, type: string) => {
+   const updateQuery = {
+      $set: {
+         'linkListStyle.type': type,
+      },
+   }
+   const result = await StyleModel.updateOne({ uriId }, updateQuery)
 }
 
 export const updateFontStyle = async (uriId: string, fontStyle: string) => {
@@ -60,8 +83,7 @@ export const updateProfileStyle = async (
    return await updateStyle(uriId, { profileStyle })
 }
 
-// create with default values
-export const createStyle = async (uriId: string) => {
+export const createStyleModel = async (uriId: string) => {
    return await StyleModel.create({
       uriId,
       background: 'bg',

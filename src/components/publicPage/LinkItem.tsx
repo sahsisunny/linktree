@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { FaShare } from 'react-icons/fa'
 
-import { LinkListStyle, StyleType } from '@/types/theme'
+import { LinkListStyle } from '@/types/theme'
 
 interface LinkItemProps {
    url: string

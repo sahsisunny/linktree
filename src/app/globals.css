@@ -166,10 +166,6 @@ body,
    .sharp {
       @apply rounded-none border-none;
    }
-
-   .border-sharp {
-      @apply border-x-2;
-   }
 }
 
 @layer components {
