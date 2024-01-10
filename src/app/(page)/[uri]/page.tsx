@@ -1,28 +1,39 @@
 import React from 'react'
 
-import uriExist from '@/actions/uriExist'
+import { getThemeByUriId } from '@/actions/themeCrud'
+import { getUriByUri } from '@/actions/uriCrud'
 import { getUserAllUrls } from '@/actions/urlCrud'
 import { getProfileDetails } from '@/actions/userProfileCrud'
 import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'
 import ProfileSection from '@/components/publicPage/ProfileSection'
-import { Url } from '@/types/url'
+import { StyleType } from '@/types/theme'
+import { Url, Urls } from '@/types/url'
 
 export default async function PublicPage({
    params,
 }: {
    params: { uri: string }
 }) {
-   const uri = params.uri
-   const uriExists = await uriExist(uri)
-   if (!uriExists) {
-      return <NoUserFound uri={uri} />
+   const uriParam = params.uri
+   const uriPage = await getUriByUri(uriParam)
+
+   if (!uriPage?.uri) {
+      return <NoUserFound uri={uriParam} />
    }
-   const urls = await getUserAllUrls(uri)
-   const profileData = await getProfileDetails(uri)
+   const urls = await getUserAllUrls(uriPage.uri)
+   const profileData = await getProfileDetails(uriPage.uri)
+   let theme = {} as StyleType
+   try {
+      theme = await getThemeByUriId(uriPage._id)
+   } catch (error) {
+      console.log(error)
+   }
 
    return (
-      <section className="flex flex-col gap-4 justify-center min-h screen items-center sm:p-20 p-4 w-full">
+      <main
+         className={`flex flex-col gap-4 justify-center min-h-screen items-center sm:p-20 p-4 w-full ${theme?.background}`}
+      >
          <ProfileSection
             uri={profileData.uri}
             name={profileData.name}
@@ -31,9 +42,15 @@ export default async function PublicPage({
          />
 
          {urls.map((url: Url) => (
-            <LinkItem key={url.url} url={url.url} title={url.title} />
+            <LinkItem
+               key={url.url}
+               url={url.url}
+               title={url.title}
+               LinkListStyle={theme?.linkListStyle}
+               background={theme?.background}
+            />
          ))}
-      </section>
+      </main>
    )
 }
 

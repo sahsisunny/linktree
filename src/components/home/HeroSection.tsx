@@ -13,7 +13,7 @@ async function HeroSection() {
    const uri = await getUri(email)
    return (
       <>
-         {!uri && <HomeForm />}
+         {!uri && <HomeForm email={email} />}
          {!!uri && <HomeOutput uri={uri} />}
       </>
    )

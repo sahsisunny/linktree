@@ -5,13 +5,17 @@ import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
 import grabUsername from '@/actions/grabUsername'
+import { createTheme } from '@/actions/themeCrud'
 import uriExist from '@/actions/uriExist'
 import debounce from '@/utils/debounce'
 
 import LogoImage from '../../../public/LinkHub.webp'
 import GithubLabel from '../Label/Github'
 
-function HomeForm() {
+interface Props {
+   email?: string
+}
+const HomeForm = ({ email }: Props) => {
    const [uri, setUri] = React.useState('')
    const [error, setError] = React.useState({
       text: 'Enter the username 👆',
@@ -41,23 +45,35 @@ function HomeForm() {
       const trimmedInput = e.target.value.trim().toLowerCase()
       debounceUriExist(trimmedInput)
    }
+
+   const asyncGrabUsername = async (uri: string) => {
+      const uriPage = await grabUsername(uri)
+      if (uriPage) {
+         const res = await createTheme(uriPage._id)
+      }
+   }
+
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       if (!uri) {
          setError({ text: 'Please enter a username', type: 'error' })
       }
       try {
-         localStorage.setItem('uri', uri)
-         await signIn('google', {
-            callbackUrl: `/login`,
-         })
+         if (!email) {
+            localStorage.setItem('uri', uri)
+            await signIn('google', {
+               callbackUrl: `/login`,
+            })
+         } else {
+            const uriPage = await grabUsername(uri)
+            if (uriPage) {
+               const res = await createTheme(uriPage._id)
+               window.location.reload()
+            }
+         }
       } catch (error) {
          console.log(error)
       }
-   }
-
-   const asyncGrabUsername = async (uri: string) => {
-      await grabUsername(uri)
    }
 
    React.useEffect(() => {
