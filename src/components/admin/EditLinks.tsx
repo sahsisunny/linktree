@@ -21,6 +21,7 @@ import UpdateOrder from '@/components/dialog/UpdateOrder'
 import Tooltip from '@/components/Tooltip'
 import { extractBaseUrl } from '@/utils/urlUtils'
 import FaviconModal from '@/components/admin/FaviconModal'
+import { MdOutlineModeEdit } from 'react-icons/md'
 
 interface EditLinksProps {
    url: string
@@ -89,7 +90,7 @@ function EditLinks({
 
             <div className="flex flex-col gap-2 p-4 w-full">
                <div className="flex flex-col sm:flex-row  gap-2 w-full">
-                  <div className="flex justify-center items-center p-2 sm:w-[50px] ">
+                  <div className="flex justify-center items-center p-2 sm:w-[60px] ">
                      <Tooltip onClick={handleEditFavicon} text="Edit Favicon">
                         <Image
                            onClick={handleEditFavicon}
@@ -101,6 +102,10 @@ function EditLinks({
                            className="rounded-full"
                            width={50}
                            height={50}
+                        />
+                        <MdOutlineModeEdit
+                           className="text-2xl text-white absolute bottom-0 right-0  "
+                           handleEditFavicon
                         />
                      </Tooltip>
                   </div>
@@ -155,7 +160,7 @@ function EditLinks({
                   <FaviconModal
                      url={url}
                      favicon={favicon}
-                     setClose={handleEditFavicon}
+                     onClose={handleEditFavicon}
                   />
                )}
             </div>

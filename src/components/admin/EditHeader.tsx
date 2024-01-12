@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 import { LuImage } from 'react-icons/lu'
+import { MdOutlineModeEdit } from 'react-icons/md'
 
 import getUri from '@/actions/getUri'
 import { imageUpload } from '@/actions/uploadImage'
@@ -50,6 +51,11 @@ const EditHeader: React.FC<Props> = ({ setClose, email, profile }) => {
       }
    }
 
+   const onImageClick = () => {
+      const input = document.getElementById('image')
+      input?.click()
+   }
+
    return (
       <div className="flex justify-center flex-col bg shadow-2xl border-x-2 text-black p-4 gap-4 rounded-xl">
          <div className="flex justify-between w-full">
@@ -66,7 +72,7 @@ const EditHeader: React.FC<Props> = ({ setClose, email, profile }) => {
                <div className="flex justify-center w-full gap-4">
                   <label
                      htmlFor="image"
-                     className="flex flex-col justify-center items-center rounded-full  text-black  w-[150px] h-[150px] cursor-pointer border-2"
+                     className="relative flex flex-col   justify-center items-center rounded-full  text-black  w-[150px] h-[150px] cursor-pointer "
                   >
                      <input
                         accept="image/*"
@@ -77,17 +83,25 @@ const EditHeader: React.FC<Props> = ({ setClose, email, profile }) => {
                      />
 
                      {image ? (
-                        <Image
-                           src={
-                              typeof image === 'string'
-                                 ? image
-                                 : URL.createObjectURL(image)
-                           }
-                           alt="profile image"
-                           className="w-[150px] h-[150px] object-cover rounded-full"
-                           width={150}
-                           height={150}
-                        />
+                        <>
+                           <Image
+                              src={
+                                 typeof image === 'string'
+                                    ? image
+                                    : URL.createObjectURL(image)
+                              }
+                              alt="profile image"
+                              className="w-[150px] h-[150px] object-cover rounded-full"
+                              width={150}
+                              height={150}
+                           />
+                           <button
+                              className="relative bottom-[30px] left-[45px] bg-gray-700 text-white p-1 rounded-full hover:bg-gray-500"
+                              onClick={onImageClick}
+                           >
+                              <MdOutlineModeEdit />
+                           </button>
+                        </>
                      ) : (
                         <LuImage className="text-[110px] text-white " />
                      )}
