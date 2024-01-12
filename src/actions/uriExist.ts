@@ -10,7 +10,7 @@ export default async function uriExist(searchUri: string) {
       const { uri } = page
       return { uri }
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

@@ -16,7 +16,7 @@ export default async function getAllUsers() {
          }
       })
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

@@ -14,7 +14,7 @@ export async function updateUserProfile(
       const page = await updateProfile(uri, bio, name, image)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -25,7 +25,7 @@ export async function getProfileDetails(uri: string) {
       const page = await getPageByUri(uri)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -36,7 +36,7 @@ export async function getProfileDetailsByEmail(email: string) {
       const page = await getPageByEmail(email)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

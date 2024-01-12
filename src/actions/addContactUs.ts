@@ -24,7 +24,7 @@ export default async function addContactUs(formData: FormData) {
          data: JSON.parse(JSON.stringify(pageDoc)),
       }
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

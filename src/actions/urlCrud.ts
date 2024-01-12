@@ -29,7 +29,7 @@ export async function getUserAllUrls(uri: string) {
 
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -48,7 +48,7 @@ export async function getUserArchivedUrls(uri: string) {
 
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -63,7 +63,7 @@ export async function getUserDeletedUrls(uri: string) {
 
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -75,7 +75,7 @@ export async function deleteUserUrlForever(url: string) {
       const page = await deleteUrlForever(url)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -86,7 +86,7 @@ export async function deleteUserAllUrls(uri: string) {
       const page = await UrlModel.deleteMany({ uri: uri })
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -98,7 +98,7 @@ export async function archiveUserUrl(url: string, archived: boolean) {
       const page = await archiveUrl(url, archived)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -109,7 +109,7 @@ export async function deleteUserUrl(url: string, isDeleted: boolean) {
       const page = await deleteUrl(url, isDeleted)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -145,7 +145,7 @@ export async function addUserUrl(uri: string, uriId: string, url: string) {
          data: JSON.parse(JSON.stringify(pageDoc)),
       }
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -156,7 +156,7 @@ export async function updateUserUrlTitle(url: string, title: string) {
       const page = await updateTitle(url, title)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -167,7 +167,7 @@ export async function updateUserUrl(url: string, newUrl: string) {
       const page = await updateUrl(url, newUrl)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -178,7 +178,7 @@ export async function updateUserUrlOrder(url: string, order: number) {
       const page = await updateOrder(url, order)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -189,7 +189,7 @@ export async function updateUserUrlFavicon(url: string, favicon: string) {
       const page = await updateFaviconModel(url, favicon)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

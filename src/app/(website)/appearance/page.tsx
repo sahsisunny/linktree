@@ -8,6 +8,7 @@ import LinkBackground from '@/components/appreance/LinkBackground'
 import LinkTypeStyle from '@/components/appreance/LinkTypeStyle'
 import PageBackground from '@/components/appreance/PageBackground'
 import authOptions from '@/utils/authOptions'
+import { createTheme, getThemeByUriId } from '@/actions/themeCrud'
 
 async function AppearancePage() {
    const sesion = await getServerSession(authOptions)
@@ -17,6 +18,10 @@ async function AppearancePage() {
    }
    const email = sesion?.user?.email || ''
    const uri = await getUriByEmail(email)
+   const theme = await getThemeByUriId(uri?._id)
+   if (!theme) {
+      await createTheme(uri?._id)
+   }
 
    return (
       <section className="flex justify-start min-h-screen xl:px-20 p-6 mt-8">

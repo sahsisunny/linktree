@@ -27,7 +27,7 @@ export default async function PublicPage({
    try {
       theme = await getThemeByUriId(uriPage._id)
    } catch (error) {
-      console.log(error)
+      console.error(error)
    }
 
    return (

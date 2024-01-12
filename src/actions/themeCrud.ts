@@ -14,7 +14,7 @@ export async function getThemeByUriId(uriId: string) {
       const theme = await getStyleByUriIdModel(uriId)
       return JSON.parse(JSON.stringify(theme))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -25,7 +25,7 @@ export async function createTheme(uriId: string) {
       const theme = await createStyleModel(uriId)
       return JSON.parse(JSON.stringify(theme))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -33,11 +33,10 @@ export async function createTheme(uriId: string) {
 export async function updateBackground(uriId: string, background: string) {
    mongoConnect()
    try {
-      console.log({ uriId, background })
       const theme = await updateBackgroundModel(uriId, background)
       return JSON.parse(JSON.stringify(theme))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -48,7 +47,7 @@ export async function updateLinkTheme(uriId: string, background: string) {
       const theme = await updateLinkBackgroundModel(uriId, background)
       return JSON.parse(JSON.stringify(theme))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -59,7 +58,7 @@ export async function updateLinkType(uriId: string, type: string) {
       const theme = await updateLinkTypeModel(uriId, type)
       return JSON.parse(JSON.stringify(theme))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

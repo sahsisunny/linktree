@@ -5,7 +5,6 @@ import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 
 import grabUsername from '@/actions/grabUsername'
-import { createTheme } from '@/actions/themeCrud'
 import uriExist from '@/actions/uriExist'
 import debounce from '@/utils/debounce'
 
@@ -47,10 +46,7 @@ const HomeForm = ({ email }: Props) => {
    }
 
    const asyncGrabUsername = async (uri: string) => {
-      const uriPage = await grabUsername(uri)
-      if (uriPage) {
-         const res = await createTheme(uriPage._id)
-      }
+      await grabUsername(uri)
    }
 
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -65,14 +61,10 @@ const HomeForm = ({ email }: Props) => {
                callbackUrl: `/login`,
             })
          } else {
-            const uriPage = await grabUsername(uri)
-            if (uriPage) {
-               const res = await createTheme(uriPage._id)
-               window.location.reload()
-            }
+            await grabUsername(uri)
          }
       } catch (error) {
-         console.log(error)
+         console.error(error)
       }
    }
 

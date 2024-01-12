@@ -9,7 +9,7 @@ export default async function getUri(email: string) {
       const page = await getUriByEmail(email)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

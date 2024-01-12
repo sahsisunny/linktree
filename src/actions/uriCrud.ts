@@ -10,7 +10,7 @@ export async function getUriByEmail(email: string) {
       const page = await getUriByEmailModel(email)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }
@@ -22,7 +22,7 @@ export async function getUriByUri(uri: string) {
       const page = await getPageByUri(uri)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

@@ -9,7 +9,7 @@ export default async function mongoConnect() {
    try {
       return mongoose
    } catch (error) {
-      console.log(error)
+      console.error(error)
       return
    }
 }

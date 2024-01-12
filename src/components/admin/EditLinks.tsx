@@ -61,7 +61,6 @@ function EditLinks({
    }
    const handleEditFavicon = async () => {
       setEditFavicon(!editFavicon)
-      console.log(favicon)
    }
 
    const dragItem = React.useRef<HTMLDivElement>(null)
