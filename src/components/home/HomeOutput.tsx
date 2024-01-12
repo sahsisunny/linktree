@@ -1,24 +1,26 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 import { LuCopy, LuExternalLink } from 'react-icons/lu'
 
 import LogoImage from '../../../public/LinkHub.webp'
-import GithubLabel from '../Label/Github'
+import GithubLabel from '@/components/Label/Github'
+import useToast from '@/hooks/useToast'
+import Tooltip from '@/components/Tooltip'
 import Toast from '../Toast'
-import Tooltip from '../Tooltip'
 
 interface HomeOutputProps {
    uri: string
 }
 
 function HomeOutput({ uri }: HomeOutputProps) {
-   const [showToast, setShowToast] = useState(false)
+   const { showToast, toasts } = useToast()
 
-   const copyToClipboard = (text: string) => {
+   const copyToClipboard = (text: string, event?: React.MouseEvent) => {
+      event?.preventDefault()
       navigator.clipboard.writeText(text)
-      setShowToast(!showToast)
+      showToast('Copied to clipboard', 3000, 'success')
    }
 
    return (
@@ -67,7 +69,9 @@ function HomeOutput({ uri }: HomeOutputProps) {
                </Tooltip>
             </div>
          </div>
-         {showToast && <Toast icon={<LuCopy />} text="Copied to clipboard" />}
+         {toasts.map((toast) => (
+            <Toast key={toast.id} {...toast} />
+         ))}{' '}
       </section>
    )
 }

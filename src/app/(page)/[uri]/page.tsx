@@ -8,7 +8,7 @@ import LinkItem from '@/components/publicPage/LinkItem'
 import NoUserFound from '@/components/publicPage/NoUserFound'
 import ProfileSection from '@/components/publicPage/ProfileSection'
 import { StyleType } from '@/types/theme'
-import { Url, Urls } from '@/types/url'
+import { Url } from '@/types/url'
 
 export default async function PublicPage({
    params,
@@ -45,6 +45,7 @@ export default async function PublicPage({
             <LinkItem
                key={url.url}
                url={url.url}
+               favicon={url.favicon}
                title={url.title}
                LinkListStyle={theme?.linkListStyle}
                background={theme?.background}

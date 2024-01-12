@@ -9,6 +9,7 @@ import {
    updateTitle,
    updateUrl,
    UrlModel,
+   updateFaviconModel,
 } from '@/models/urlModel'
 import { getDomainFromUrl } from '@/utils/urlUtils'
 
@@ -175,6 +176,17 @@ export async function updateUserUrlOrder(url: string, order: number) {
    mongoConnect()
    try {
       const page = await updateOrder(url, order)
+      return JSON.parse(JSON.stringify(page))
+   } catch (error) {
+      console.log(error)
+      return
+   }
+}
+
+export async function updateUserUrlFavicon(url: string, favicon: string) {
+   mongoConnect()
+   try {
+      const page = await updateFaviconModel(url, favicon)
       return JSON.parse(JSON.stringify(page))
    } catch (error) {
       console.log(error)

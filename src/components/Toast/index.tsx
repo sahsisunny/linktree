@@ -1,27 +1,54 @@
-import React, { useEffect, useState } from 'react'
+import { ToastType } from '@/types/Toast'
+import { FC, useEffect } from 'react'
+import { MdDone, MdError, MdInfo } from 'react-icons/md'
 
-interface ToastProps {
-   icon: React.ReactNode
-   text: string
+const typeClassMap = {
+   success: 'bg-green-500 text-white',
+   error: 'bg-red-500 text-white',
+   default: 'bg-blue-500 text-white',
 }
 
-function Toast({ icon, text }: ToastProps) {
-   const [visible, setVisible] = useState(true)
+const iconMap: Record<string, React.ReactElement> = {
+   success: <MdDone size={24} />,
+   error: <MdError size={24} />,
+   default: <MdInfo size={24} />,
+}
 
+const Toast: FC<ToastType> = ({
+   message,
+   isVisible,
+   timeToShow,
+   onDismiss,
+   type,
+}) => {
    useEffect(() => {
-      const timer = setTimeout(() => {
-         setVisible(false)
-      }, 3000)
+      if (isVisible) {
+         const timer = setTimeout(() => {
+            onDismiss()
+         }, timeToShow)
 
-      return () => clearTimeout(timer)
-   }, [])
+         return () => clearTimeout(timer)
+      }
+   }, [isVisible, timeToShow, onDismiss])
 
-   return visible ? (
-      <div className="fixed top-[15%] right-4 bg border-x-2  text-white p-4 rounded-2xl shadow-lg flex items-center">
-         <div className="mr-2">{icon}</div>
-         <p>{text}</p>
+   const toastType = type as keyof typeof typeClassMap
+   const icon = iconMap[toastType] || iconMap.default
+   const toastClasses = typeClassMap[toastType] || typeClassMap.default
+
+   return (
+      <div
+         className={`fixed top-[15%] right-4 p-4 rounded-md shadow-md z-50 ${
+            isVisible ? 'visible' : 'invisible'
+         } ${toastClasses}`}
+      >
+         <div className="flex items-center justify-center">
+            {icon}
+            <p className="ml-2" data-testid="toast">
+               {message}
+            </p>
+         </div>
       </div>
-   ) : null
+   )
 }
 
 export default Toast

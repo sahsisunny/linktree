@@ -2,6 +2,7 @@ import { model, models, Schema } from 'mongoose'
 
 const UrlSchema = new Schema({
    url: { type: String },
+   favicon: { type: String },
    uriId: { type: String, required: true },
    uri: { type: String, required: true },
    title: { type: String },
@@ -53,4 +54,8 @@ export const updateDeleted = async (url: string, newDeleted: boolean) => {
 
 export const archiveUrl = async (url: string, newArchived: boolean) => {
    return await UrlModel.updateOne({ url: url }, { isArchived: newArchived })
+}
+
+export const updateFaviconModel = async (url: string, newFavicon: string) => {
+   return await UrlModel.updateOne({ url: url }, { favicon: newFavicon })
 }

@@ -38,6 +38,7 @@ async function Links() {
                   isArchive={url.isArchived}
                   isDeleted={url.isDeleted}
                   totalUrls={urls.length}
+                  favicon={url.favicon}
                   order={url.order}
                />
             ))}
@@ -55,6 +56,7 @@ async function Links() {
                   title={url.title}
                   isArchive={url.isArchived}
                   isDeleted={url.isDeleted}
+                  favicon={url.favicon}
                   totalUrls={urls.length}
                   order={url.order}
                />
@@ -74,6 +76,7 @@ async function Links() {
                   isArchive={url.isArchived}
                   isDeleted={url.isDeleted}
                   totalUrls={urls.length}
+                  favicon={url.favicon}
                   order={url.order}
                />
             ))}

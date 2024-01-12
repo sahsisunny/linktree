@@ -6,7 +6,7 @@ import authOptions from '@/utils/authOptions'
 
 export default async function Login() {
    const sesion = await getServerSession(authOptions)
-   if (!!sesion) {
+   if (sesion) {
       redirect('/')
    }
    return (

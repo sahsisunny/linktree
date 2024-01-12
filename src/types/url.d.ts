@@ -2,6 +2,7 @@ export interface Url {
    url: string
    uriId: string
    uri: string
+   favicon: string
    title: string
    addedAt: Date
    updatedAt: Date

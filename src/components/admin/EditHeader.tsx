@@ -31,7 +31,6 @@ const EditHeader: React.FC<Props> = ({ setClose, email, profile }) => {
    }
 
    const onSubmit = async () => {
-      // if nothing changed then close the modal
       if (
          image === profile?.image &&
          fullName === profile?.name &&

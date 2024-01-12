@@ -1,6 +1,5 @@
 import React from 'react'
 import { GrAddCircle, GrSubtractCircle } from 'react-icons/gr'
-import { MdClose } from 'react-icons/md'
 
 import { updateUserUrlOrder } from '@/actions/urlCrud'
 import debounce from '@/utils/debounce'

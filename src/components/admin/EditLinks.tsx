@@ -20,6 +20,7 @@ import { EditInput } from '@/components/admin/EditInput'
 import UpdateOrder from '@/components/dialog/UpdateOrder'
 import Tooltip from '@/components/Tooltip'
 import { extractBaseUrl } from '@/utils/urlUtils'
+import FaviconModal from '@/components/admin/FaviconModal'
 
 interface EditLinksProps {
    url: string
@@ -28,6 +29,7 @@ interface EditLinksProps {
    isDeleted: boolean
    totalUrls: number
    order: number
+   favicon: string
 }
 
 function EditLinks({
@@ -37,8 +39,10 @@ function EditLinks({
    isDeleted,
    totalUrls,
    order,
+   favicon,
 }: EditLinksProps) {
    const [updateOrderModal, setUpdateOrderModal] = useState(false)
+   const [editFavicon, setEditFavicon] = useState(false)
 
    const handleDelete = async () => {
       await deleteUserUrl(url, !isDeleted)
@@ -54,6 +58,10 @@ function EditLinks({
    const handleDeleteForever = async () => {
       await deleteUserUrlForever(url)
       window.location.reload()
+   }
+   const handleEditFavicon = async () => {
+      setEditFavicon(!editFavicon)
+      console.log(favicon)
    }
 
    const dragItem = React.useRef<HTMLDivElement>(null)
@@ -81,17 +89,23 @@ function EditLinks({
             </div>
 
             <div className="flex flex-col gap-2 p-4 w-full">
-               <div className="flex  gap-2 w-full">
-                  <div className="flex justify-center items-center p-2 w-[50px]">
-                     <Image
-                        src={`https://www.google.com/s2/favicons?domain=${url}&sz=256`}
-                        alt={`Favicon for ${extractBaseUrl(url)}`}
-                        className="rounded-full"
-                        width={50}
-                        height={50}
-                     />
+               <div className="flex flex-col sm:flex-row  gap-2 w-full">
+                  <div className="flex justify-center items-center p-2 sm:w-[50px] ">
+                     <Tooltip onClick={handleEditFavicon} text="Edit Favicon">
+                        <Image
+                           onClick={handleEditFavicon}
+                           src={
+                              favicon ||
+                              `https://www.google.com/s2/favicons?domain=${url}&sz=256`
+                           }
+                           alt={`Favicon for ${extractBaseUrl(url)}`}
+                           className="rounded-full"
+                           width={50}
+                           height={50}
+                        />
+                     </Tooltip>
                   </div>
-                  <div className="flex flex-col gap-2 w-[90%]">
+                  <div className="flex flex-col gap-2 sm:w-[90%]">
                      <EditInput initialText={title} url={url} maxLength={20} />
                      <EditInput initialText={url} url={url} maxLength={50} />
                      <div className="flex gap-4 w-[full]">
@@ -138,6 +152,13 @@ function EditLinks({
                      </div>
                   </div>
                </div>
+               {editFavicon && (
+                  <FaviconModal
+                     url={url}
+                     favicon={favicon}
+                     setClose={handleEditFavicon}
+                  />
+               )}
             </div>
          </div>
       </div>
